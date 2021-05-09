@@ -1,0 +1,46 @@
+{{>layout/header}}
+
+<h1>회사 정보</h1>
+<div class="col-md-12">
+    <div class="row">
+        <div>
+            {{#userName}}
+                Logged in as: <span id="user">{{userName}}</span>
+                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+
+                <a href="/portfolio/v1" class="btn btn-success active" role="button">포트폴리오</a>
+                <a href="/trading-history/v1" class="btn btn-secondary active" role="button">매매일지</a>
+                <a href="/interestedStock/v1/" class="btn btn-secondary active" role="button">관심종목</a>
+                <a href="/company-info/v1" class="btn btn-secondary active" role="button">업체정보</a>
+            {{/userName}}
+            {{^userName}}
+            {{/userName}}
+        </div>
+    </div>
+    <br>
+    <!-- 목록 출력 영역 -->
+    <table class="table table-horizontal table-bordered">
+        <thead class="thead-strong">
+        <tr>
+            <th>게시글번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>최종수정일</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#posts}}
+            <tr>
+                <td>{{id}}</td>
+                <td><a href="/posts/update/{{id}}">{{title}}</a></td>
+                <td>{{author}}</td>
+                <td>{{modifiedDate}}</td>
+            </tr>
+        {{/posts}}
+        </tbody>
+    </table>
+</div>
+
+{{>layout/footer2}}
+
+{{>layout/footer}}
