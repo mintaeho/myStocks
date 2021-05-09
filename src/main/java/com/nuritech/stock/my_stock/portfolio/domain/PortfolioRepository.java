@@ -53,7 +53,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                    "               LEFT OUTER JOIN stock s ON p.ticker = s.ticker  " +
                    "               LEFT OUTER JOIN daybooks d ON p.ticker = d.ticker AND p.email = d.email  " +
                    "         WHERE p.email = :email " +
-                   "         GROUP BY ticker " +
+                   "         GROUP BY p.ticker " +
                    "       ) v", nativeQuery = true)
     List<Object[]> selectSumPortfolio(@Param("email") String email);
 
