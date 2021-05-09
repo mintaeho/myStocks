@@ -30,7 +30,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                            "       sum(d.trading_amount) OVER (PARTITION BY p.ticker) AS total_trading_amount, " +
                            "       sum(d.trading_amount) OVER (PARTITION BY p.email) AS sum_trading_amount" +
                            "  FROM portfolio p" +
-                           "       LEFT OUTER JOIN stock S ON p.ticker = s.ticker" +
+                           "       LEFT OUTER JOIN stock s ON p.ticker = s.ticker" +
                            "       LEFT OUTER JOIN daybooks d ON p.ticker = d.ticker AND p.email = d.email" +
                            "       LEFT OUTER JOIN interested_stock e ON p.ticker = e.ticker AND p.email = e.email" +
                            " WHERE p.email = :email" +
