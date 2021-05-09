@@ -26,7 +26,7 @@ public interface InterestedStockRepository extends JpaRepository<InterestedStock
                    "                 ELSE 'N' END buying_yn, " +
                    "       p.nobility_stock_yn " +
                    "  FROM interested_stock p" +
-                   "       LEFT OUTER JOIN stock S ON p.ticker = s.ticker" +
+                   "       LEFT OUTER JOIN stock s ON p.ticker = s.ticker" +
                    " WHERE p.email = :email" +
                    " ORDER BY div_yield desc", nativeQuery = true)
     List<Object[]> selectInterestedStock(@Param("email") String email);

@@ -73,7 +73,7 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 application-oauth.properties
-#application.properties
+application.properties
 /build/
 
 # Project exclude paths
