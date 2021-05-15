@@ -24,6 +24,9 @@ var interestedStock = {
     popup_mod_interestedStock: function(url) {
         window.open(url, "popup_mod_interestedStock", "width=400, height=600, resizable=no, scrollbars=no, location=no");
     },
+    popup_view_companyInfo: function(url) {
+        window.open(url, "popup_view_companyInfo", "width=400, height=600, resizable=no, scrollbars=no, location=no");
+    },
     save : function () {
         var data = {
             ticker: $('#ticker').val(),
@@ -31,6 +34,7 @@ var interestedStock = {
             dividendPayMonth: $('#dividendPayMonth').val(),
             businessCycle: $('#businessCycle').val(),
             nobilityStockYn: $('#nobilityStockYn').is(":checked")?"Y":"N",
+            companyInfo: $('#companyInfo').val(),
         };
 
         $.ajax({
@@ -53,6 +57,7 @@ var interestedStock = {
             dividendPayMonth: $('#dividendPayMonth').val(),
             businessCycle: $('#businessCycle').val(),
             nobilityStockYn: $('#nobilityStockYn').is(":checked")?"Y":"N",
+            companyInfo: $('#companyInfo').val(),
         };
 
         var ticker = $('#ticker').val();

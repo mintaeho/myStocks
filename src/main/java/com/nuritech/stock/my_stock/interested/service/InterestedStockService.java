@@ -32,7 +32,8 @@ public class InterestedStockService {
                      requestDto.getStockNm(),
                      requestDto.getBusinessCycle(),
                      requestDto.getNobilityStockYn(),
-                     requestDto.getDividendPayMonth())
+                     requestDto.getDividendPayMonth(),
+                     requestDto.getCompanyInfo())
                     ;
         return stockId.getTicker();
     }

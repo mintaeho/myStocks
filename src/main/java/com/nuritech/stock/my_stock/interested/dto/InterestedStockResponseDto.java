@@ -11,6 +11,7 @@ public class InterestedStockResponseDto {
     private String businessCycle;
     private String nobilityStockYn;
     private String dividendPayMonth;
+    private String companyInfo;
 
     public InterestedStockResponseDto(InterestedStock entity) {
         this.email = entity.getInterestedStockId().getEmail();
@@ -19,6 +20,7 @@ public class InterestedStockResponseDto {
         this.businessCycle = entity.getBusinessCycle();
         this.nobilityStockYn = entity.getNobilityStockYn();
         this.dividendPayMonth = entity.getDividendPayMonth();
+        this.companyInfo = entity.getCompanyInfo();
     }
 
 }

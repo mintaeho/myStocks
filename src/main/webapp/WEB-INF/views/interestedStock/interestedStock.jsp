@@ -71,7 +71,7 @@
                                                     <a href="javascript:interestedStock.popup_mod_interestedStock('/interestedStock/v1/update/${items.ticker}')">${items.ticker}</a>
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="javascript:interestedStock.popup_mod_interestedStock('/interestedStock/v1/update/${items.ticker}')">${items.stockNm}</a>
+                                                    <a href="javascript:interestedStock.popup_view_companyInfo('/companyInfo/v1/view/${items.ticker}')">${items.stockNm}</a>
                                                 </td>
                                                 <td class="text-center">
                                                     ${items.buyingYn=='Y'?'*':''} /

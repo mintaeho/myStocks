@@ -48,4 +48,17 @@ public class InterestedStockController {
         return "interestedStock/interestedStock-update";
     }
 
+    @GetMapping("/companyInfo/v1/view/{ticker}")
+    public String companyInfo(@PathVariable String ticker,
+                              @LoginUser SessionUser user,
+                              Model model) {
+        InterestedStockResponseDto dto = interestedStockService
+                .findById(InterestedStockId.builder()
+                        .email((user != null) ? user.getEmail() : "")
+                        .ticker(ticker)
+                        .build());
+        model.addAttribute("companyInfo", dto);
+        return "interestedStock/companyInfo-view";
+    }
+
 }

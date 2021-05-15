@@ -30,29 +30,37 @@ public class InterestedStock extends BaseTimeEntity {
     @Column(length = 15, nullable = true)
     private String dividendPayMonth;
 
+    @Column(columnDefinition = "TEXT", nullable = true)
+    private String companyInfo;
+
+
     @Builder
     public InterestedStock(InterestedStockId interestedStockId,
                            String stockNm,
                            String businessCycle,
                            String nobilityStockYn,
-                           String dividendPayMonth) {
+                           String dividendPayMonth,
+                           String companyInfo) {
         this.interestedStockId = interestedStockId;
         this.stockNm = stockNm;
         this.businessCycle = businessCycle;
         this.nobilityStockYn = nobilityStockYn;
         this.dividendPayMonth = dividendPayMonth;
+        this.companyInfo = companyInfo;
     }
 
     public void update(InterestedStockId interestedStockId,
                        String stockNm,
                        String businessCycle,
                        String nobilityStockYn,
-                       String dividendPayMonth) {
+                       String dividendPayMonth,
+                       String companyInfo) {
         this.interestedStockId = interestedStockId;
         this.stockNm = stockNm;
         this.businessCycle = businessCycle;
         this.nobilityStockYn = nobilityStockYn;
         this.dividendPayMonth = dividendPayMonth;
+        this.companyInfo = companyInfo;
 
     }
 }

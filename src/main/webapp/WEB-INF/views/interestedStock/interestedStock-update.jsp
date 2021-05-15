@@ -45,7 +45,13 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label>회사 정보</label>
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">이 회사의 수익구조, 주요 이슈 및 향후 전망 등</label>
+                                    <textarea class="form-control" rows="5" id="companyInfo">${interestedStock.companyInfo}</textarea>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="card-footer ">

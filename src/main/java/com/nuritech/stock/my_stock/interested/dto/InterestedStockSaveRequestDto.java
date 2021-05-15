@@ -16,6 +16,7 @@ public class InterestedStockSaveRequestDto {
     private String businessCycle;
     private String nobilityStockYn;
     private String dividendPayMonth;
+    private String companyInfo;
 
     public void setEmail(String email) {
         this.email = email;
@@ -27,13 +28,15 @@ public class InterestedStockSaveRequestDto {
                                          String stockNm,
                                          String businessCycle,
                                          String nobilityStockYn,
-                                         String dividendPayMonth) {
+                                         String dividendPayMonth,
+                                         String companyInfo) {
         this.email = email;
         this.ticker = ticker;
         this.stockNm = stockNm;
         this.businessCycle = businessCycle;
         this.nobilityStockYn = nobilityStockYn;
         this.dividendPayMonth = dividendPayMonth;
+        this.companyInfo = companyInfo;
     }
 
     public InterestedStock toEntity() {
@@ -46,6 +49,7 @@ public class InterestedStockSaveRequestDto {
                 .businessCycle(businessCycle)
                 .nobilityStockYn(nobilityStockYn)
                 .dividendPayMonth(dividendPayMonth)
+                .companyInfo(companyInfo)
                 .build();
     }
 }
