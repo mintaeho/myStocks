@@ -15,7 +15,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                          " current_price, avg_unit_price, total_stock_num, annual_payout, " +
                            "total_stock_num * annual_payout AS total_payout, " +
                            "annual_payout / avg_unit_price * 100 AS investment_div_yield, " +
-                           "total_trading_amount," +
+                           "total_trading_amount, " +
                            "current_price * total_stock_num AS eval_amount," +
                            "(current_price * total_stock_num) - total_trading_amount AS earning_amount," +
                            "((current_price * total_stock_num) - total_trading_amount)/total_trading_amount AS earning_rate," +

@@ -31,7 +31,8 @@ public class InterestedStockService {
         stock.update(stockId,
                      requestDto.getStockNm(),
                      requestDto.getBusinessCycle(),
-                     requestDto.getNobilityStockYn())
+                     requestDto.getNobilityStockYn(),
+                     requestDto.getDividendPayMonth())
                     ;
         return stockId.getTicker();
     }

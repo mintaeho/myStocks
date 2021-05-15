@@ -6,7 +6,8 @@
     <head>
         <tiles:insertAttribute name="headerDiv" />
     </head>
-    <body class="text-center">
+
+    <body class="off-canvas-sidebar">
         <tiles:insertAttribute name="body" />
     </body>
 

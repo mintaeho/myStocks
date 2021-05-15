@@ -6,23 +6,22 @@
     <head>
         <tiles:insertAttribute name="headerDiv" />
     </head>
-    <body>
-        <tiles:insertAttribute name="topbarDiv" />
 
-        <div class="container-fluid">
-            <div class="row">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                    <tiles:insertAttribute name="sidebarDiv" />
-                </nav>
+<body class="">
+  <div class="wrapper ">
+    <tiles:insertAttribute name="sidebarDiv" />
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <p>
-                    <tiles:insertAttribute name="body" />
-                </main>
+    <div class="main-panel">
+      <tiles:insertAttribute name="topbarDiv" />
 
-            </div>
-        </div>
-    </body>
+      <tiles:insertAttribute name="body" />
 
-    <tiles:insertAttribute name="footerDiv" />
+      <footer class="footer">
+        <tiles:insertAttribute name="footerDiv" />
+      </footer>
+    </div>
+  </div>
+
+  <tiles:insertAttribute name="resourcesDiv" />
+</body>
 </html>

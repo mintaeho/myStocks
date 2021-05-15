@@ -78,3 +78,4 @@ application.properties
 
 # Project exclude paths
 /.gradle/
+/src/main/resources/static/assets/

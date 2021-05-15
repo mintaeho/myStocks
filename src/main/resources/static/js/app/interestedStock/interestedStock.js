@@ -13,13 +13,24 @@ var interestedStock = {
             _this.delete();
         });
 
+        $('#btn-reg-interestedStock').on('click', function () {
+            _this.popup_reg_interestedStock();
+        });
+    },
+    popup_reg_interestedStock: function () {
+        var url = "/interestedStock/v1/save";
+        window.open(url, "popup_reg_interestedStock", "width=400, height=600, resizable=no, scrollbars=no, location=no");
+    },
+    popup_mod_interestedStock: function(url) {
+        window.open(url, "popup_mod_interestedStock", "width=400, height=600, resizable=no, scrollbars=no, location=no");
     },
     save : function () {
         var data = {
             ticker: $('#ticker').val(),
             stockNm: $('#stockNm').val(),
+            dividendPayMonth: $('#dividendPayMonth').val(),
             businessCycle: $('#businessCycle').val(),
-            nobilityStockYn: $('#nobilityStockYn').val(),
+            nobilityStockYn: $('#nobilityStockYn').is(":checked")?"Y":"N",
         };
 
         $.ajax({
@@ -29,7 +40,8 @@ var interestedStock = {
             data: JSON.stringify(data)
         }).done(function() {
             alert('관심종목이 등록되었습니다.');
-            window.location.href = '/interestedStock/v1';
+            //window.location.href = '/interestedStock/v1';
+            opener.location.href = "/interestedStock/v1";
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
@@ -38,8 +50,9 @@ var interestedStock = {
         var data = {
             ticker: $('#ticker').val(),
             stockNm: $('#stockNm').val(),
+            dividendPayMonth: $('#dividendPayMonth').val(),
             businessCycle: $('#businessCycle').val(),
-            nobilityStockYn: $('#nobilityStockYn').val(),
+            nobilityStockYn: $('#nobilityStockYn').is(":checked")?"Y":"N",
         };
 
         var ticker = $('#ticker').val();
@@ -51,7 +64,9 @@ var interestedStock = {
             data: JSON.stringify(data)
         }).done(function() {
             alert('관심종목이 수정되었습니다.');
-            window.location.href = '/interestedStock/v1';
+            //window.location.href = '/interestedStock/v1';
+            opener.location.href = "/interestedStock/v1";
+            window.close();
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
@@ -65,12 +80,13 @@ var interestedStock = {
             contentType:'application/json; charset=utf-8'
         }).done(function() {
             alert('관심종목이 삭제되었습니다.');
-            window.location.href = '/interestedStock/v1';
+            //window.location.href = '/interestedStock/v1';
+            opener.location.href = "/interestedStock/v1";
+            window.close();
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
     },
-
 };
 
 interestedStock.init();

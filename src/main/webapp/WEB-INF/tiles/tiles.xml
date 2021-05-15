@@ -9,6 +9,7 @@
     <definition name="loginTemplate" template="/WEB-INF/template/loginTemplate.jsp">
         <put-attribute name="headerDiv" value="/WEB-INF/template/include/login/headerDiv.jsp" />
         <put-attribute name="body" value="" />
+        <put-attribute name="resourcesDiv" value="/WEB-INF/template/include/login/resourcesDiv.jsp" />
         <put-attribute name="footerDiv" value="/WEB-INF/template/include/login/footerDiv.jsp" />
     </definition>
 
@@ -19,6 +20,7 @@
         <put-attribute name="sidebarDiv" value="/WEB-INF/template/include/default/sidebarDiv.jsp" />
         <put-attribute name="body" value="" />
         <put-attribute name="footerDiv" value="/WEB-INF/template/include/default/footerDiv.jsp" />
+        <put-attribute name="resourcesDiv" value="/WEB-INF/template/include/default/resourcesDiv.jsp" />
     </definition>
     
 

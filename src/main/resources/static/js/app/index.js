@@ -16,7 +16,6 @@ var main = {
         $('#btn-ticker-test').on('click', function () {
             _this.test();
         });
-
     },
     save : function () {
         var data = {

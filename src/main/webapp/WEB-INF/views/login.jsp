@@ -1,21 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/template/include/taglibInc.jsp" %>
 
-    <p>&nbsp;</p>
-    <div class="d-grid gap-2 col-6 mx-auto">
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-            <p>&nbsp;</p>
-            <c:if test="${userName eq null }">
-                <a href="/oauth2/authorization/google" class="w-50 btn btn-info btn-sm active" role="button">Google Login</a>
-                <p>&nbsp;</p>
-                <a href="/oauth2/authorization/naver" class="w-50 btn btn-secondary btn-sm active" role="button">Naver Login</a>
-            </c:if>
-            <c:if test="${userName ne null }">
-                Logged in as: <span id="user">${userName}</span>
-                <a href="/logout" class="w-40  btn btn-info btn-sm active" role="button">Logout</a>
-            </c:if>
-    </div>
-
+      <!-- Navbar -->
+      <!-- End Navbar -->
+      <div class="wrapper wrapper-full-page">
+        <div class="page-header login-page header-filter" filter-color="black" style="background-size: cover; background-position: top center;">
+          <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+                <form class="form" method="" action="">
+                  <div class="card card-login">
+                    <div class="card-header card-header-rose text-center">
+                      <h4 class="card-title">Login</h4>
+                      <div class="social-line">
+                        <!-- 영역삭제 -->
+                      </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <a class="btn btn-primary" href="/oauth2/authorization/google">Google</a>
+                        <a class="btn btn-success" href="/oauth2/authorization/naver">Naver</a>
+                      <!-- 영역삭제 -->
+                    </div>
+                    <div class="card-footer justify-content-center">
+                      <!-- 영역삭제 -->
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <footer class="footer">
+            <div class="container">
+              <nav class="float-left">
+                <!-- 영역 삭제 -->
+              </nav>
+              <div class="copyright float-right">
+                <!-- 영역 삭제 -->
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
 
     <!--index.js 추가-->
     <script src="/js/app/index.js"></script>

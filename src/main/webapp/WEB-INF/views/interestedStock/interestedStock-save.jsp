@@ -1,31 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/template/include/taglibInc.jsp" %>
 
-    <!-- 입력 영역 -->
-    <div class="col-md-4">
-        <form>
-            <div class="form-group">
-                <label for="title">티커</label>
-                <input type="text" class="w-50 form-control" id="ticker" placeholder="티커를 입력하세요">
-            </div>
-            <div class="form-group">
-                <label for="author">종목명</label>
-                <input type="text" class="w-50 form-control" id="stockNm" placeholder="종목명을 입력하세요">
-            </div>
-            <div class="form-group">
-                <label for="author">경기순환</label>
-                <input type="text" class="w-50 form-control" id="businessCycle" placeholder="회복/호황/후퇴/불황 중 입력하세요">
-            </div>
-            <div class="form-group">
-                <label for="author">배당귀족주 여부</label>
-                <select class="w-50 form-control" id="nobilityStockYn" data-style="btn-inverse">
-                    <option value='Y'>Y</option>
-                    <option value='N'>N</option>
-                  </select>
-            </div>
-        </form>
-        <a href="/interestedStock/v1" role="button" class="btn btn-secondary">취소</a>
-        <button type="button" class="btn btn-primary" id="btn-save">등록</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card ">
+                    <div class="card-header card-header-rose card-header-icon">
+                        <h4 class="card-title">관심종목 등록</h4>
+                    </div>
+                    <div class="card-body ">
+                        <form method="#" action="#">
+                            <div class="form-group">
+                                <label for="티커" class="bmd-label-floating">티커</label>
+                                <input type="input" class="form-control" id="ticker">
+                            </div>
+                            <div class="form-group">
+                                <label for="종목명" class="bmd-label-floating">종목명</label>
+                                <input type="input" class="form-control" id="stockNm">
+                            </div>
+                            <div class="form-group">
+                                <label for="배당월" class="bmd-label-floating">배당월</label>
+                                <input type="input" class="form-control" id="dividendPayMonth">
+                            </div>
+                            <div class="form-group">
+                                <select class="selectpicker" data-style="select-with-transition"
+                                        title="경기순환" data-size="7"
+                                        id="businessCycle">
+                                    <option value="회복" selected>회복</option>
+                                    <option value="호황">호황</option>
+                                    <option value="후퇴">후퇴</option>
+                                    <option value="불황">불황</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-3"></label>
+                                <div class="col-md-9">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" id="nobilityStockYn" checked value=""> 배당귀족주
+                                            <span class="form-check-sign">
+                                                <span class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="card-footer ">
+                        <a href="javascript:window.close()" role="button" class="btn btn-info">취소</a>
+                        <button type="button" class="btn btn-primary" id="btn-save">등록</button>
+                    </div>
+                </div>
+            </div> <!-- end of col-md-6 -->
+        </div>
     </div>
 
     <script src="/js/app/interestedStock/interestedStock.js"></script>
