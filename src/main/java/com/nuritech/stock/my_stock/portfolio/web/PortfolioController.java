@@ -29,6 +29,8 @@ public class PortfolioController {
         //model.addAttribute("portfolio", portfolioService.findAllDesc());
         model.addAttribute("portfolio", portfolioService.selectPortfolio(user.getEmail()));
         model.addAttribute("portfolioSum", portfolioService.selectSumPortfolio(user.getEmail()));
+        model.addAttribute("summaryPayout", portfolioService.selectSummaryPayoutPerMonth(user.getEmail()));
+
 
         if (user != null) {
             model.addAttribute("userName", user.getName());

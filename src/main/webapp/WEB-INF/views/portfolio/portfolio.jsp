@@ -83,7 +83,7 @@
                                                 <td class="text-right">${items.earningAmount}</td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.earningRate}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.portion}" pattern="#,###.##"/></td>
-                                                <td></td>
+                                                <td class="text-center">${items.dividendPayMonth}</td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -98,8 +98,8 @@
             </div>
             <!-- end row -->
 
-            <c:forEach var="items" items="${portfolioSum}" varStatus="status">
-                <div class="row">
+            <div class="row">
+                <c:forEach var="items" items="${portfolioSum}" varStatus="status">
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header card-header-primary card-header-icon">
@@ -118,23 +118,23 @@
                                         <thead>
                                             <tr>
                                                 <th>총 배당금</th>
-                                                <th>총 배당금(원)</th>
                                                 <th>총 투자금액($)</th>
-                                                <th>총 투자금액(원)</th>
                                                 <th>총 평가금액($)</th>
                                                 <th>수익금($)</th>
                                                 <th>수익률(%)</th>
+                                                <th>총 배당금(원)</th>
+                                                <th>총 투자금액(원)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td class="text-right"><fmt:formatNumber value="${items.totalPayout}" pattern="#,###.##"/></td>
-                                                <td class="text-right"><fmt:formatNumber value="${items.totalPayout*1116}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.totalTradingAmount}" pattern="#,###.##"/></td>
-                                                <td class="text-right"><fmt:formatNumber value="${items.totalTradingAmount*1116}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.totalEvalAmount}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.earningAmount}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.earningRate}" pattern="#,###.##"/></td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.totalPayout*1116}" pattern="#,###.##"/></td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.totalTradingAmount*1116}" pattern="#,###.##"/></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -144,10 +144,52 @@
                         </div>
                         <!--  end card  -->
                     </div>
-                    <!-- end col-md-12 -->
-              </div>
-              <!-- end row -->
-          </c:forEach>
+                    <!-- end col-md-6 -->
+                </c:forEach>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header card-header-primary card-header-icon">
+                          <div class="card-icon">
+                            <i class="material-icons">assignment</i>
+                          </div>
+                          <h4 class="card-title">배당금 요약</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="toolbar">
+                                <!--        Here you can write extra buttons/actions for the toolbar              -->
+                                ※ 적용환율 : 1,116원 적용
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>배당지급월</th>
+                                            <th>배당금($)</th>
+                                            <th>월별 배당금($)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="items" items="${summaryPayout}" varStatus="status">
+                                            <tr>
+                                                <td class="text-center">${items.dividendPayMonth}</td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.totalPayout}" pattern="#,###.##"/></td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.payoutMonth}" pattern="#,###.##"/></td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- end content-->
+                    </div>
+                    <!--  end card  -->
+                </div>
+                <!-- end col-md-6 -->
+
+          </div>
+          <!-- end row -->
+
         </div>
     </div>
 

@@ -59,5 +59,12 @@ public class PortfolioService {
         return dto.toDto(list);
     }
 
+    @Transactional(readOnly = true)
+    public List<SummaryPayoutPerMonthResponseDto> selectSummaryPayoutPerMonth(String email) {
+        List<Object[]> list = portfolioRepository.selectSummaryPayoutPerMonth(email);
+        SummaryPayoutPerMonthResponseDto dto = SummaryPayoutPerMonthResponseDto.builder().build();
+        return dto.toDto(list);
+    }
+
 
 }

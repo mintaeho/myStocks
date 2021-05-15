@@ -58,5 +58,38 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                    "       ) v", nativeQuery = true)
     List<Object[]> selectSumPortfolio(@Param("email") String email);
 
+    @Query(value =  "SELECT x.dividend_pay_month, " +
+                    "       SUM(x.total_payout) AS total_payout, " +
+                    "       SUM(x.total_payout)/ CASE WHEN x.dividend_pay_month='매월' THEN 12 ELSE 4 END AS payout_month " +
+                    "  FROM( " +
+                    "       SELECT v.ticker, v.stock_nm, business_cycle, sector," +
+                    "              current_price, avg_unit_price, total_stock_num, annual_payout, " +
+                    "              total_stock_num * annual_payout AS total_payout, " +
+                    "              annual_payout / avg_unit_price * 100 AS investment_div_yield, " +
+                    "              total_trading_amount, " +
+                    "              current_price * total_stock_num AS eval_amount," +
+                    "              (current_price * total_stock_num) - total_trading_amount AS earning_amount," +
+                    "              ((current_price * total_stock_num) - total_trading_amount)/total_trading_amount AS earning_rate," +
+                    "              total_trading_amount/sum_trading_amount*100 AS protion, " +
+                    "              dividend_pay_month " +
+                    "         FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, s.sector, " +
+                    "                      s.current_price, s.annual_payout, s.div_yield," +
+                    "                      e.dividend_pay_month, s.highest_price, s.lower_price, " +
+                    "                      ifnull(d.trading_amount, 0) AS trading_amount, " +
+                    "                      d.stock_num, d.unit_price, " +
+                    "                      avg(d.unit_price) OVER (PARTITION BY p.ticker) AS avg_unit_price, " +
+                    "                      sum(d.stock_num) OVER (PARTITION BY p.ticker) AS total_stock_num, " +
+                    "                      sum(d.trading_amount) OVER (PARTITION BY p.ticker) AS total_trading_amount, " +
+                    "                      sum(d.trading_amount) OVER (PARTITION BY p.email) AS sum_trading_amount" +
+                    "                 FROM portfolio p" +
+                    "                      LEFT OUTER JOIN stock s ON p.ticker = s.ticker" +
+                    "                      LEFT OUTER JOIN daybooks d ON p.ticker = d.ticker AND p.email = d.email" +
+                    "                      LEFT OUTER JOIN interested_stock e ON p.ticker = e.ticker AND p.email = e.email" +
+                    "                WHERE p.email = :email" +
+                    "              ) v" +
+                    "        GROUP BY v.ticker" +
+                    "      ) x " +
+                    " GROUP BY x.dividend_pay_month ", nativeQuery = true)
+    List<Object[]> selectSummaryPayoutPerMonth(@Param("email") String email);
 
 }
