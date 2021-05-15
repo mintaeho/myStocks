@@ -26,6 +26,7 @@ public class PortfolioListExpandedDto {
     private BigDecimal earningAmount;
     private BigDecimal earningRate;
     private BigDecimal portion;
+    private String dividendPayMonth;
     private LocalDateTime modifiedDate;
 
 
@@ -44,7 +45,8 @@ public class PortfolioListExpandedDto {
                                     BigDecimal evalAmount,
                                     BigDecimal earningAmount,
                                     BigDecimal earningRate,
-                                    BigDecimal portion) {
+                                    BigDecimal portion,
+                                    String dividendPayMonth) {
         this.ticker = ticker;
         this.stockNm =  stockNm;
         this.businessCycle = businessCycle;
@@ -60,6 +62,7 @@ public class PortfolioListExpandedDto {
         this.earningAmount = earningAmount;
         this.earningRate = earningRate;
         this.portion = portion;
+        this.dividendPayMonth = dividendPayMonth;
     }
 
 
@@ -82,6 +85,7 @@ public class PortfolioListExpandedDto {
                     .earningAmount((BigDecimal) obj[12])
                     .earningRate((BigDecimal) obj[13])
                     .portion((BigDecimal) obj[14])
+                    .dividendPayMonth((String) obj[15])
                     .build());
         }
         return list;
