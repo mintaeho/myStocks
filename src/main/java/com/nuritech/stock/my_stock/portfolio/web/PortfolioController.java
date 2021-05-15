@@ -8,11 +8,13 @@ import com.nuritech.stock.my_stock.portfolio.domain.PortfolioId;
 import com.nuritech.stock.my_stock.portfolio.dto.PortfolioResponseDto;
 import com.nuritech.stock.my_stock.portfolio.service.PortfolioService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+@Slf4j
 @RequiredArgsConstructor
 @Controller
 public class PortfolioController {
@@ -21,7 +23,9 @@ public class PortfolioController {
 
     @GetMapping("/portfolio/v1")
     public String portfolio(Model model,
-                                  @LoginUser SessionUser user) {
+                            @LoginUser SessionUser user) {
+
+        log.debug(">> user email = {}", user.getEmail());
         //model.addAttribute("portfolio", portfolioService.findAllDesc());
         model.addAttribute("portfolio", portfolioService.selectPortfolio(user.getEmail()));
         model.addAttribute("portfolioSum", portfolioService.selectSumPortfolio(user.getEmail()));

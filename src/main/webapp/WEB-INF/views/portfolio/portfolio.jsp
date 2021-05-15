@@ -18,17 +18,19 @@
         <table class="table table-bordered table-sm">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>경기순환</th>
-                    <th>섹터</th>
-                    <th>티커</th>
-                    <th>종목명</th>
-                    <th>현재가</th>
-                    <th>평균매입단가</th>
-                    <th>주식수</th>
-                    <th>주당배당금</th>
-                    <th>배당금</th>
-                    <th>투자배당률</th>
+                    <th class="align-middle" style="width: 2%"rowspan="2">No</th>
+                    <th class="align-middle" style="width: 5%"rowspan="2">경기<br/>순환</th>
+                    <th class="align-middle" rowspan="2">섹터</th>
+                    <th class="align-middle" style="width: 4%"rowspan="2">티커</th>
+                    <th class="align-middle" rowspan="2">종목명</th>
+                    <th class="align-middle" style="width: 8%">현재가</th>
+                    <th class="align-middle" style="width: 8%">평균매입단가</th>
+                    <th class="align-middle" style="width: 8%">주식수</th>
+                    <th class="align-middle" style="width: 8%">주당배당금</th>
+                    <th class="align-middle" style="width: 8%">배당금</th>
+                    <th class="align-middle" style="width: 8%">투자배당률</th>
+                </tr>
+                <tr>
                     <th>매입금액</th>
                     <th>평가금액</th>
                     <th>수익금액</th>
@@ -40,17 +42,19 @@
             <tbody id="tbody">
                 <c:forEach var="items" items="${portfolio}" varStatus="status">
                     <tr>
-                        <td class="text-center">${status.count}</td>
-                        <td class="text-center">${items.businessCycle}</td>
-                        <td class="text-center">${items.sector}</td>
-                        <td class="text-center"><a href="/portfolio/v1/update/${items.ticker}">${items.ticker}</a></td>
-                        <td class="text-center">${items.stockNm}</td>
+                        <td rowspan="2" class="text-center">${status.count}</td>
+                        <td rowspan="2" class="text-center">${items.businessCycle}</td>
+                        <td rowspan="2" class="text-center">${items.sector}</td>
+                        <td rowspan="2" class="text-center"><a href="/portfolio/v1/update/${items.ticker}">${items.ticker}</a></td>
+                        <td rowspan="2" class="text-center">${items.stockNm}</td>
                         <td class="text-right">${items.currentPrice}</td>
                         <td class="text-right"><fmt:formatNumber value="${items.avgUnitPrice}" pattern="#,###.##"/></td>
                         <td class="text-right">${items.totalStockNum}</td>
                         <td class="text-right">${items.annualPayout}</td>
                         <td class="text-right">${items.totalPayout}</td>
                         <td class="text-right"><fmt:formatNumber value="${items.investmentDivYield}" pattern="#,###.##"/></td>
+                    </tr>
+                    <tr>
                         <td class="text-right">${items.totalTradingAmount}</td>
                         <td class="text-right">${items.evalAmount}</td>
                         <td class="text-right">${items.earningAmount}</td>
