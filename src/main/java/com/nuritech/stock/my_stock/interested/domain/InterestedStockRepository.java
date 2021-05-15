@@ -13,7 +13,7 @@ public interface InterestedStockRepository extends JpaRepository<InterestedStock
 
     @Query(value = "SELECT p.ticker, s.stock_nm, p.business_cycle, s.sector, " +
                    "       s.current_price, s.payout_ratio, s.annual_payout, s.div_yield," +
-                   "       s.dividend_pay_month, s.highest_price, s.lower_price, " +
+                   "       p.dividend_pay_month, s.highest_price, s.lower_price, " +
                    "       (s.highest_price+s.lower_price)/2 as avg_price, " +
                    "       (s.highest_price*0.9) as under_10_price, " +
                    "       (s.highest_price*0.8) as under_20_price, " +

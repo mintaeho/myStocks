@@ -15,14 +15,14 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                          " current_price, avg_unit_price, total_stock_num, annual_payout, " +
                            "total_stock_num * annual_payout AS total_payout, " +
                            "annual_payout / avg_unit_price * 100 AS investment_div_yield, " +
-                           "total_trading_amount, " +
+                           "total_trading_amount, dividend_pay_month, " +
                            "current_price * total_stock_num AS eval_amount," +
                            "(current_price * total_stock_num) - total_trading_amount AS earning_amount," +
                            "((current_price * total_stock_num) - total_trading_amount)/total_trading_amount AS earning_rate," +
                            "total_trading_amount/sum_trading_amount*100 AS protion" +
                     " FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, s.sector, " +
                            "       s.current_price, s.annual_payout, s.div_yield," +
-                           "       s.dividend_pay_month, s.highest_price, s.lower_price, " +
+                           "       e.dividend_pay_month, s.highest_price, s.lower_price, " +
                            "       ifnull(d.trading_amount, 0) AS trading_amount, " +
                            "       d.stock_num, d.unit_price, " +
                            "       avg(d.unit_price) OVER (PARTITION BY p.ticker) AS avg_unit_price, " +
