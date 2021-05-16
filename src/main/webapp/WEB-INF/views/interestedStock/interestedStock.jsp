@@ -17,6 +17,7 @@
                             <div class="toolbar">
                                 <!--        Here you can write extra buttons/actions for the toolbar              -->
                                 <button type="button" class="btn btn-outline-primary btn-sm" id="btn-reg-interestedStock">관심종목 등록</button>
+                                <button type="button" class="btn btn-outline-primary btn-sm" id="btn-get-currentInfo">현행화</button>
                                 <div class="text-right">* : 보유종목 &nbsp;&nbsp;&nbsp;&nbsp; ** : 배당귀족주</div>
                             </div>
                             <div class="material-datatables">
@@ -66,7 +67,9 @@
                                     <tbody>
                                         <c:forEach var="items" items="${interestedStocks}" varStatus="status">
                                             <tr>
-                                                <td class="text-center">${status.count}</td>
+                                                <td class="text-center">
+                                                    <a href="javascript:interestedStock.popup_get_currentInfo('/currentInfo/v1/${items.ticker}')">${status.count}</a>
+                                                </td>
                                                 <td class="text-center">
                                                     <a href="javascript:interestedStock.popup_mod_interestedStock('/interestedStock/v1/update/${items.ticker}')">${items.ticker}</a>
                                                 </td>

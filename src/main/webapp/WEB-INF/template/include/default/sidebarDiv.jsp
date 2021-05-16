@@ -63,6 +63,7 @@
                   <p> 관심종목 </p>
                 </a>
               </li>
+              <% /*
               <li class="nav-item ">
                 <a class="nav-link" href="/company-info/v1">
                   <i class="material-icons">widgets</i>
@@ -73,6 +74,7 @@
               <li class="nav-item text-center">
                 <button type="button" class="btn btn-outline-primary btn-sm" id="btn-scraping">Scraping Command</button>
               </li>
+              */ %>
 
           </sec:authorize>
         </ul>

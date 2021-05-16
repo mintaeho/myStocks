@@ -70,8 +70,11 @@
                                                 <td>${items.businessCycle}</td>
                                                 <td>${items.sector}</td>
                                                 <td>
-                                                <a href="javascript:portfolio.popup_mod_portfolio('/portfolio/v1/update/${items.ticker}')">${items.ticker}</a></td>
-                                                <td>${items.stockNm}</td>
+                                                    <a href="javascript:portfolio.popup_mod_portfolio('/portfolio/v1/update/${items.ticker}')">${items.ticker}</a>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:portfolio.popup_view_companyInfo('/companyInfo/v1/view/${items.ticker}')">${items.stockNm}</a>
+                                                </td>
                                                 <td class="text-right">${items.currentPrice}</td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.avgUnitPrice}" pattern="#,###.##"/></td>
                                                 <td class="text-right">${items.totalStockNum}</td>

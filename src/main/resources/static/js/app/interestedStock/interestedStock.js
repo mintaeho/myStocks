@@ -16,6 +16,10 @@ var interestedStock = {
         $('#btn-reg-interestedStock').on('click', function () {
             _this.popup_reg_interestedStock();
         });
+
+        $('#btn-get-currentInfo').on('click', function () {
+            _this.getCurrentInfo();
+        });
     },
     popup_reg_interestedStock: function () {
         var url = "/interestedStock/v1/save";
@@ -26,6 +30,13 @@ var interestedStock = {
     },
     popup_view_companyInfo: function(url) {
         window.open(url, "popup_view_companyInfo", "width=400, height=600, resizable=no, scrollbars=no, location=no");
+    },
+    popup_get_currentInfo: function(url) {
+        window.open(url, "popup_get_currentInfo", "width=400, height=600, resizable=no, scrollbars=no, location=no");
+    },
+    getCurrentInfo: function() {
+        var url = $("#requestUrl").val();
+        popup2 = window.open(url, "popup_get_currentInfo_result", "width=400, height=600, resizable=no, scrollbars=no, location=no");
     },
     save : function () {
         var data = {
@@ -92,6 +103,25 @@ var interestedStock = {
             alert(JSON.stringify(error));
         });
     },
+    applyCurrentInfo: function() {
+        var data = {
+            result: $('#result').val()
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/v1/scrap/manual',
+            contentType:'application/json; charset=utf-8',
+            //data: JSON.stringify($('#result').val())
+            data: $('#result').val()
+        }).done(function() {
+            alert('최신정보로 반영되었습니다.');
+            opener.location.href = "/interestedStock/v1";
+            window.close();
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+    }
 };
 
 interestedStock.init();

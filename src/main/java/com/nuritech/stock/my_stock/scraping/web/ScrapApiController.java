@@ -1,7 +1,11 @@
 package com.nuritech.stock.my_stock.scraping.web;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 import com.nuritech.stock.my_stock.interested.dto.InterestedStockListResponseDto;
+import com.nuritech.stock.my_stock.interested.dto.InterestedStockSaveRequestDto;
 import com.nuritech.stock.my_stock.interested.service.InterestedStockService;
 import com.nuritech.stock.my_stock.scraping.service.ScrapService;
 import com.nuritech.stock.my_stock.scraping.dto.StockDto;
@@ -15,9 +19,11 @@ import org.springframework.web.bind.annotation.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 @Slf4j
@@ -171,4 +177,43 @@ public class ScrapApiController {
                 .append("&slugs=")
                 .append(ticker).toString();
     }
+
+
+    @PostMapping("/api/v1/scrap/manual")
+    public String scrapManual(@RequestBody String requestStr) {
+        String strJson = requestStr.replaceAll("(\r\n|\r|\n|\n\r|\\p{Z}|\\t|\\\\)", "");
+
+        try {
+            Gson gson2 = new Gson();
+            DividendDataDto dividendInfo = gson2.fromJson(strJson, DividendDataDto.class);
+
+            String ticker = dividendInfo.getData().get(0).getId();
+
+            Gson gson = new Gson();
+            RealtimeDataDto realtimeInfo = gson.fromJson(getRealTimeInfo(ticker).toString(), RealtimeDataDto.class);
+
+            StockDto stockDto = StockDto.builder()
+                    .ticker(realtimeInfo.getData().get(0).getAttributes().getIdentifier())
+                    .stockNm(realtimeInfo.getData().get(0).getAttributes().getName())
+                    .businessCycle("")
+                    .sector(dividendInfo.getData().get(0).getAttributes().getSectorname())
+                    .currentPrice(realtimeInfo.getData().get(0).getAttributes().getLast())
+                    .divYield(dividendInfo.getData().get(0).getAttributes().getDivYieldFwd())
+                    .annualPayout(dividendInfo.getData().get(0).getAttributes().getDivRate())
+                    .payoutRatio(dividendInfo.getData().get(0).getAttributes().getPayoutRatio())
+                    .fiveYearGrowthRate(dividendInfo.getData().get(0).getAttributes().getDivGrowRate5())
+                    .dividendGrowth(dividendInfo.getData().get(0).getAttributes().getDividendGrowth())
+                    .highestPrice(realtimeInfo.getData().get(0).getAttributes().getHigh52Week())
+                    .lowerPrice(realtimeInfo.getData().get(0).getAttributes().getLow52Week())
+                    //.dividendPayMonth("")
+                    .build();
+
+            scrapService.stockSave(stockDto);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+
+        return "SUCCESS";
+    }
+
 }

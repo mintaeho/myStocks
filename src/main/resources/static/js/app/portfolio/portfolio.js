@@ -20,6 +20,9 @@ var portfolio = {
     popup_mod_portfolio: function(url) {
         window.open(url, "popup_mod_portfolio", "width=400, height=600, resizable=no, scrollbars=no, location=no");
     },
+    popup_view_companyInfo: function(url) {
+        window.open(url, "popup_view_companyInfo", "width=400, height=600, resizable=no, scrollbars=no, location=no");
+    },
     save : function () {
         var data = {
             ticker: $('#ticker').val(),

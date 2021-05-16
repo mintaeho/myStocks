@@ -6,24 +6,23 @@
             <div class="col-md-3">
                 <div class="card ">
                     <div class="card-header card-header-rose card-header-icon">
-                        <h4 class="card-title">업체정보 조회</h4>
+                        <h4 class="card-title">최신정보 수집(수동)</h4>
                     </div>
                     <div class="card-body ">
                         <form method="#" action="#">
-                            ${companyInfo.stockNm}(${companyInfo.ticker}), ${companyInfo.businessCycle},
-                            배당귀족:${companyInfo.nobilityStockYn}
+                            <a href="javascript:interestedStock.getCurrentInfo()">정보가져오기</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="javascript:interestedStock.applyCurrentInfo()">적용하기</a>
+                            <input type="hidden" id="requestUrl" value="${requestUrl}"/>
                             <div class="form-group">
-                                <label>회사 정보</label>
+                                <label>결과</label>
                                 <div class="form-group">
-                                    <label class="bmd-label-floating">이 회사의 수익구조, 주요 이슈 및 향후 전망 등</label>
-                                    <textarea class="form-control" rows="20" id="companyInfo" readonly>${companyInfo.companyInfo}</textarea>
+                                    <textarea class="form-control" rows="20" id="result"></textarea>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="card-footer ">
                         <a href="javascript:window.close()" role="button" class="btn btn-info">확인</a>
-                        <button type="button" class="btn btn-primary" onclick="location.href='/interestedStock/v1/update/${companyInfo.ticker}'" id="btn-fwd-update">수정</button>
                     </div>
                 </div>
             </div> <!-- end of col-md-6 -->

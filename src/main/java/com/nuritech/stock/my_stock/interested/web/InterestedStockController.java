@@ -61,4 +61,19 @@ public class InterestedStockController {
         return "interestedStock/companyInfo-view";
     }
 
+    @GetMapping("/currentInfo/v1/{ticker}")
+    public String currentInfo(@PathVariable String ticker,
+                              @LoginUser SessionUser user,
+                              Model model) {
+        String requestUrl = new StringBuilder().append("https://seekingalpha.com/api/v3/symbol_data?")
+                .append("fields[]=log&fields[]=divYieldFwd&fields[]=divRate&fields[]=payoutRatio&")
+                .append("fields[]=divGrowRate5&fields[]=dividendGrowth&fields[]=divYieldTtm&")
+                .append("fields[]=divDistribution&fields[]=sectorname&fields[]=dividends&slugs=")
+                .append(ticker)
+                .toString();
+
+        model.addAttribute("requestUrl", requestUrl);
+        return "interestedStock/currentInfo-update";
+    }
+
 }
