@@ -12,7 +12,7 @@
                 <form class="form" method="" action="">
                   <div class="card card-login">
                     <div class="card-header card-header-rose text-center">
-                      <h4 class="card-title">Login v0.1</h4>
+                      <h4 class="card-title">Login v0.2</h4>
                       <div class="social-line">
                         <!-- 영역삭제 -->
                       </div>
