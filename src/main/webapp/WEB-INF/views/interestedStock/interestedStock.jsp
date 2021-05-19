@@ -17,7 +17,7 @@
                             <div class="toolbar">
                                 <!--        Here you can write extra buttons/actions for the toolbar              -->
                                 <button type="button" class="btn btn-outline-primary btn-sm" id="btn-reg-interestedStock">관심종목 등록</button>
-                                <button type="button" class="btn btn-outline-primary btn-sm" id="btn-get-currentInfo">현행화</button>
+                                <button type="button" class="btn btn-outline-primary btn-sm" id="btn-scrap-currentInfo">현행화</button>
                                 <div class="text-right">* : 보유종목 &nbsp;&nbsp;&nbsp;&nbsp; ** : 배당귀족주</div>
                             </div>
                             <div class="material-datatables">

@@ -20,6 +20,12 @@ var interestedStock = {
         $('#btn-get-currentInfo').on('click', function () {
             _this.getCurrentInfo();
         });
+
+        $('#btn-scrap-currentInfo').on('click', function () {
+            _this.applyCurrentInfo();
+        });
+
+
     },
     popup_reg_interestedStock: function () {
         var url = "/interestedStock/v1/save";
