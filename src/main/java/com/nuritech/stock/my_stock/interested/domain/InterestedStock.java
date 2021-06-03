@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * 나의포트폴리오 Entity
@@ -27,8 +28,20 @@ public class InterestedStock extends BaseTimeEntity {
     @Column(length = 1, nullable = true)
     private String nobilityStockYn;
 
-    @Column(length = 15, nullable = true)
-    private String dividendPayMonth;
+    @Column(nullable = true)
+    private BigDecimal divYield;
+
+    @Column(nullable = true)
+    private BigDecimal annualPayout;
+
+    @Column(nullable = true)
+    private BigDecimal payoutRatio;
+
+    @Column(nullable = true)
+    private BigDecimal fiveYearGrowthRate;
+
+    @Column(length = 3, nullable = true)
+    private String dividendGrowth;
 
     @Column(columnDefinition = "TEXT", nullable = true)
     private String companyInfo;
@@ -39,13 +52,21 @@ public class InterestedStock extends BaseTimeEntity {
                            String stockNm,
                            String businessCycle,
                            String nobilityStockYn,
-                           String dividendPayMonth,
+                           BigDecimal divYield,
+                           BigDecimal annualPayout,
+                           BigDecimal payoutRatio,
+                           BigDecimal fiveYearGrowthRate,
+                           String dividendGrowth,
                            String companyInfo) {
         this.interestedStockId = interestedStockId;
         this.stockNm = stockNm;
         this.businessCycle = businessCycle;
         this.nobilityStockYn = nobilityStockYn;
-        this.dividendPayMonth = dividendPayMonth;
+        this.divYield = divYield;
+        this.annualPayout = annualPayout;
+        this.payoutRatio = payoutRatio;
+        this.fiveYearGrowthRate = fiveYearGrowthRate;
+        this.dividendGrowth = dividendGrowth;
         this.companyInfo = companyInfo;
     }
 
@@ -53,13 +74,21 @@ public class InterestedStock extends BaseTimeEntity {
                        String stockNm,
                        String businessCycle,
                        String nobilityStockYn,
-                       String dividendPayMonth,
+                       BigDecimal divYield,
+                       BigDecimal annualPayout,
+                       BigDecimal payoutRatio,
+                       BigDecimal fiveYearGrowthRate,
+                       String dividendGrowth,
                        String companyInfo) {
         this.interestedStockId = interestedStockId;
         this.stockNm = stockNm;
         this.businessCycle = businessCycle;
         this.nobilityStockYn = nobilityStockYn;
-        this.dividendPayMonth = dividendPayMonth;
+        this.divYield = divYield;
+        this.annualPayout = annualPayout;
+        this.payoutRatio = payoutRatio;
+        this.fiveYearGrowthRate = fiveYearGrowthRate;
+        this.dividendGrowth = dividendGrowth;
         this.companyInfo = companyInfo;
 
     }

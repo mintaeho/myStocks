@@ -8,5 +8,5 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class DividendDataDto {
-    private List<DividendIdDto> data;
+    private DividendAttributeDto data;
 }

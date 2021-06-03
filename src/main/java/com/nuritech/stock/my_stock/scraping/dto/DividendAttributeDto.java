@@ -13,43 +13,22 @@ import java.util.List;
 @NoArgsConstructor
 public class DividendAttributeDto {
 
-    private BigDecimal divYieldFwd;
-    private BigDecimal divRate;
-    private BigDecimal payoutRatio;
-    private BigDecimal divGrowRate5;
-    private Integer dividendGrowth;
-    private BigDecimal divYieldTtm;
-    private String divDistribution;
-    private String sectorname;
-    private List<DividendQuarterlyDto> dividends;
-
-
-    public String toParameter() {
-        StringBuilder sb = new StringBuilder();
-        try {
-            Object obj = this;
-            int idx = 0;
-
-            for (Field field : obj.getClass().getDeclaredFields()) {
-                //field.setAccessible(true);
-                Object value = field.get(obj);
-                sb.append(makeParam(field.getName(), idx==0));
-                idx++;
-            }
-        } catch(Exception e) {
-            log.error(e.getMessage(), e);
-        }
-        return sb.toString();
-
-    }
-
-    private String makeParam(String field,
-                             boolean isFirst) {
-        if (isFirst) {
-            return new StringBuilder().append("fields[]=").append(field).toString();
-        }
-        return new StringBuilder().append("&fields[]=").append(field).toString();
-    }
+    private String amount;
+    private String currency;
+    private String declaredDate;
+    private String description;
+    private String exDate;
+    private String flag;
+    private String frequency;
+    private String paymentDate;
+    private String recordDate;
+    private int refid;
+    private String symbol;
+    private String id;
+    private String key;
+    private String subkey;
+    private double date;
+    private double updated;
 
 
 }

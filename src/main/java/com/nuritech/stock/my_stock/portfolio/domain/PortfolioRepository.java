@@ -23,7 +23,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                            "dividend_pay_month " +
                     " FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, s.sector, " +
                            "       s.current_price, s.annual_payout, s.div_yield," +
-                           "       e.dividend_pay_month, s.highest_price, s.lower_price, " +
+                           "       s.dividend_pay_month, s.highest_price, s.lower_price, " +
                            "       ifnull(d.trading_amount, 0) AS trading_amount, " +
                            "       d.stock_num, d.unit_price, " +
                            "       avg(d.unit_price) OVER (PARTITION BY p.ticker) AS avg_unit_price, " +
@@ -74,7 +74,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                     "              dividend_pay_month " +
                     "         FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, s.sector, " +
                     "                      s.current_price, s.annual_payout, s.div_yield," +
-                    "                      e.dividend_pay_month, s.highest_price, s.lower_price, " +
+                    "                      s.dividend_pay_month, s.highest_price, s.lower_price, " +
                     "                      ifnull(d.trading_amount, 0) AS trading_amount, " +
                     "                      d.stock_num, d.unit_price, " +
                     "                      avg(d.unit_price) OVER (PARTITION BY p.ticker) AS avg_unit_price, " +

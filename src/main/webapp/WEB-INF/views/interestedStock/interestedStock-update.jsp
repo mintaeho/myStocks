@@ -19,8 +19,24 @@
                                 <input type="input" class="form-control" id="stockNm" value="${interestedStock.stockNm}">
                             </div>
                             <div class="form-group">
-                                <label for="배당월" class="bmd-label-floating">배당월</label>
-                                <input type="input" class="form-control" id="dividendPayMonth" value="${interestedStock.dividendPayMonth}">
+                                <label for="배당월" class="bmd-label-floating">배당수익률</label>
+                                <input type="input" class="form-control" id="divYield" value="${interestedStock.divYield}">
+                            </div>
+                            <div class="form-group">
+                                <label for="배당월" class="bmd-label-floating">주당배당금</label>
+                                <input type="input" class="form-control" id="annualPayout" value="${interestedStock.annualPayout}">
+                            </div>
+                            <div class="form-group">
+                                <label for="배당월" class="bmd-label-floating">배당성향</label>
+                                <input type="input" class="form-control" id="payoutRatio" value="${interestedStock.payoutRatio}">
+                            </div>
+                            <div class="form-group">
+                                <label for="배당월" class="bmd-label-floating">5년배당성장률</label>
+                                <input type="input" class="form-control" id="fiveYearGrowthRate" value="${interestedStock.fiveYearGrowthRate}">
+                            </div>
+                            <div class="form-group">
+                                <label for="배당월" class="bmd-label-floating">배당성장년수</label>
+                                <input type="input" class="form-control" id="dividendGrowth" value="${interestedStock.dividendGrowth}">
                             </div>
                             <div class="form-group">
                                 <select class="selectpicker" data-style="select-with-transition"

@@ -48,7 +48,11 @@ var interestedStock = {
         var data = {
             ticker: $('#ticker').val(),
             stockNm: $('#stockNm').val(),
-            dividendPayMonth: $('#dividendPayMonth').val(),
+            divYield: $('#divYield').val(),
+            annualPayout: $('#annualPayout').val(),
+            payoutRatio: $('#payoutRatio').val(),
+            fiveYearGrowthRate: $('#fiveYearGrowthRate').val(),
+            dividendGrowth: $('#dividendGrowth').val(),
             businessCycle: $('#businessCycle').val(),
             nobilityStockYn: $('#nobilityStockYn').is(":checked")?"Y":"N",
             companyInfo: $('#companyInfo').val(),
@@ -116,7 +120,8 @@ var interestedStock = {
 
         $.ajax({
             type: 'POST',
-            url: '/api/v1/scrap/manual',
+            //url: '/api/v1/scrap/manual',
+            url: '/api/v1/scrap',
             contentType:'application/json; charset=utf-8',
             //data: JSON.stringify($('#result').val())
             data: $('#result').val()

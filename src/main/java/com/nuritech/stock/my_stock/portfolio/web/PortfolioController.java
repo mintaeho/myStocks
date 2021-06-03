@@ -40,7 +40,7 @@ public class PortfolioController {
 
     @GetMapping("/portfolio/v1/save")
     public String portfolioSave() {
-        return "portfolio/portfolio-save";
+        return "portfolio/portfolio-save.popup";
     }
 
     @GetMapping("/portfolio/v1/update/{ticker}")
@@ -54,7 +54,7 @@ public class PortfolioController {
                         .ticker(ticker)
                         .build());
         model.addAttribute("portfolio", dto);
-        return "portfolio/portfolio-update";
+        return "portfolio/portfolio-update.popup";
     }
 
 }

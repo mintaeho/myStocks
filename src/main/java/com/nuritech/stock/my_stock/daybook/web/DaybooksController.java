@@ -31,7 +31,7 @@ public class DaybooksController {
 
     @GetMapping("/daybooks/v1/save")
     public String daybooksSave() {
-        return "daybooks/daybooks-save";
+        return "daybooks/daybooks-save.popup";
     }
 
     @GetMapping("/daybooks/v1/update/{id}")
@@ -41,7 +41,7 @@ public class DaybooksController {
         DaybooksResponseDto dto = daybooksService
                 .findById(id);
         model.addAttribute("daybooks", dto);
-        return "daybooks/daybooks-update";
+        return "daybooks/daybooks-update.popup";
     }
 
 }

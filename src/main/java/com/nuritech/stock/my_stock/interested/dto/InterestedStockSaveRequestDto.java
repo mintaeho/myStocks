@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @NoArgsConstructor
 public class InterestedStockSaveRequestDto {
@@ -15,7 +17,11 @@ public class InterestedStockSaveRequestDto {
     private String stockNm;
     private String businessCycle;
     private String nobilityStockYn;
-    private String dividendPayMonth;
+    private BigDecimal divYield;
+    private BigDecimal annualPayout;
+    private BigDecimal payoutRatio;
+    private BigDecimal fiveYearGrowthRate;
+    private String dividendGrowth;
     private String companyInfo;
 
     public void setEmail(String email) {
@@ -28,14 +34,22 @@ public class InterestedStockSaveRequestDto {
                                          String stockNm,
                                          String businessCycle,
                                          String nobilityStockYn,
-                                         String dividendPayMonth,
+                                         BigDecimal divYield,
+                                         BigDecimal annualPayout,
+                                         BigDecimal payoutRatio,
+                                         BigDecimal fiveYearGrowthRate,
+                                         String dividendGrowth,
                                          String companyInfo) {
         this.email = email;
         this.ticker = ticker;
         this.stockNm = stockNm;
         this.businessCycle = businessCycle;
         this.nobilityStockYn = nobilityStockYn;
-        this.dividendPayMonth = dividendPayMonth;
+        this.divYield = divYield;
+        this.annualPayout = annualPayout;
+        this.payoutRatio = payoutRatio;
+        this.fiveYearGrowthRate = fiveYearGrowthRate;
+        this.dividendGrowth = dividendGrowth;
         this.companyInfo = companyInfo;
     }
 
@@ -48,7 +62,11 @@ public class InterestedStockSaveRequestDto {
                 .stockNm(stockNm)
                 .businessCycle(businessCycle)
                 .nobilityStockYn(nobilityStockYn)
-                .dividendPayMonth(dividendPayMonth)
+                .divYield(divYield)
+                .annualPayout(annualPayout)
+                .payoutRatio(payoutRatio)
+                .fiveYearGrowthRate(fiveYearGrowthRate)
+                .dividendGrowth(dividendGrowth)
                 .companyInfo(companyInfo)
                 .build();
     }

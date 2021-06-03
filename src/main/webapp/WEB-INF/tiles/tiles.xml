@@ -22,14 +22,29 @@
         <put-attribute name="footerDiv" value="/WEB-INF/template/include/default/footerDiv.jsp" />
         <put-attribute name="resourcesDiv" value="/WEB-INF/template/include/default/resourcesDiv.jsp" />
     </definition>
-    
 
     <!-- login template -->
     <definition name="login" extends="loginTemplate">
         <put-attribute name="body" value="/WEB-INF/views/login.jsp" />
     </definition>
 
+    <!--// popup layout -->
+    <definition name="popupTemplate" template="/WEB-INF/template/popupTemplate.jsp">
+        <put-attribute name="headerDiv" value="/WEB-INF/template/include/popup/headerDiv.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footerDiv" value="/WEB-INF/template/include/popup/footerDiv.jsp" />
+        <put-attribute name="resourcesDiv" value="/WEB-INF/template/include/popup/resourcesDiv.jsp" />
+    </definition>
+
+
     <!-- default template -->
+    <definition name="*/*/*.popup" extends="popupTemplate">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+    </definition>
+    <definition name="*/*.popup" extends="popupTemplate">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+
     <definition name="*" extends="defaultTemplate">
         <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
     </definition>

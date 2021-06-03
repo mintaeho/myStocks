@@ -69,6 +69,7 @@ public class InterestedStockListExapndedDto {
         this.nobilityStockYn = nobilityStockYn;
     }
 
+
     public List<InterestedStockListExapndedDto> toDto(List<Object[]> objects) {
         List<InterestedStockListExapndedDto> list = new ArrayList<InterestedStockListExapndedDto>();
         for(Object[] obj : objects) {
@@ -94,6 +95,7 @@ public class InterestedStockListExapndedDto {
         }
         return list;
     }
+
 
 
 }

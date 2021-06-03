@@ -31,7 +31,7 @@ public class InterestedStockController {
 
     @GetMapping("/interestedStock/v1/save")
     public String interestedStockSave() {
-        return "interestedStock/interestedStock-save";
+        return "interestedStock/interestedStock-save.popup";
     }
 
     @GetMapping("/interestedStock/v1/update/{ticker}")
@@ -45,7 +45,7 @@ public class InterestedStockController {
                                         .ticker(ticker)
                                         .build());
         model.addAttribute("interestedStock", dto);
-        return "interestedStock/interestedStock-update";
+        return "interestedStock/interestedStock-update.popup";
     }
 
     @GetMapping("/companyInfo/v1/view/{ticker}")
@@ -58,7 +58,7 @@ public class InterestedStockController {
                         .ticker(ticker)
                         .build());
         model.addAttribute("companyInfo", dto);
-        return "interestedStock/companyInfo-view";
+        return "interestedStock/companyInfo-view.popup";
     }
 
     @GetMapping("/currentInfo/v1/{ticker}")
@@ -73,7 +73,7 @@ public class InterestedStockController {
                 .toString();
 
         model.addAttribute("requestUrl", requestUrl);
-        return "interestedStock/currentInfo-update";
+        return "interestedStock/currentInfo-update.popup";
     }
 
 }
