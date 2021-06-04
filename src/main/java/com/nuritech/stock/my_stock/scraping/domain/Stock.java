@@ -33,20 +33,20 @@ public class Stock extends BaseTimeEntity {
     @Column
     private BigDecimal currentPrice;    //현재가
 
-    @Column
-    private BigDecimal divYield;  //배당수익률(%)
+    //@Column
+    //private BigDecimal divYield;  //배당수익률(%)
 
-    @Column
-    private BigDecimal annualPayout;    //연간 배당금
+    //@Column
+    //private BigDecimal annualPayout;    //연간 배당금
 
-    @Column
-    private BigDecimal payoutRatio;    //배당성향(%)
+    //@Column
+    //private BigDecimal payoutRatio;    //배당성향(%)
 
-    @Column
-    private BigDecimal fiveYearGrowthRate;  // 5년 성장률
+    //@Column
+    //private BigDecimal fiveYearGrowthRate;  // 5년 성장률
 
-    @Column
-    private Integer dividendGrowth; // 배당성장년수
+    //@Column
+    //private Integer dividendGrowth; // 배당성장년수
 
     @Column
     private String dividendPayMonth;    //배당월
@@ -63,11 +63,11 @@ public class Stock extends BaseTimeEntity {
                  String businessCycle,
                  String sector,
                  BigDecimal currentPrice,
-                 BigDecimal divYield,
-                 BigDecimal annualPayout,
-                 BigDecimal payoutRatio,
-                 BigDecimal fiveYearGrowthRate,
-                 Integer dividendGrowth,
+                 //BigDecimal divYield,
+                 //BigDecimal annualPayout,
+                 //BigDecimal payoutRatio,
+                 //BigDecimal fiveYearGrowthRate,
+                 //Integer dividendGrowth,
                  String dividendPayMonth,
                  BigDecimal highestPrice,
                  BigDecimal lowerPrice) {
@@ -76,11 +76,11 @@ public class Stock extends BaseTimeEntity {
         this.businessCycle = businessCycle;
         this.sector = sector;
         this.currentPrice = currentPrice;
-        this.divYield = divYield;
-        this.annualPayout = annualPayout;
-        this.payoutRatio = payoutRatio;
-        this.fiveYearGrowthRate = fiveYearGrowthRate;
-        this.dividendGrowth = dividendGrowth;
+        //this.divYield = divYield;
+        //this.annualPayout = annualPayout;
+        //this.payoutRatio = payoutRatio;
+        //this.fiveYearGrowthRate = fiveYearGrowthRate;
+        //this.dividendGrowth = dividendGrowth;
         this.dividendPayMonth = dividendPayMonth;
         this.highestPrice = highestPrice;
         this.lowerPrice = lowerPrice;
@@ -90,11 +90,11 @@ public class Stock extends BaseTimeEntity {
                        String businessCycle,
                        String sector,
                        BigDecimal currentPrice,
-                       BigDecimal divYield,
-                       BigDecimal annualPayout,
-                       BigDecimal payoutRatio,
-                       BigDecimal fiveYearGrowthRate,
-                       int dividendGrowth,
+                       //BigDecimal divYield,
+                       //BigDecimal annualPayout,
+                       //BigDecimal payoutRatio,
+                       //BigDecimal fiveYearGrowthRate,
+                       //int dividendGrowth,
                        String dividendPayMonth,
                        BigDecimal highestPrice,
                        BigDecimal lowerPrice) {
@@ -102,11 +102,11 @@ public class Stock extends BaseTimeEntity {
         this.businessCycle = businessCycle;
         this.sector = sector;
         this.currentPrice = currentPrice;
-        this.divYield = divYield;
-        this.annualPayout = annualPayout;
-        this.payoutRatio = payoutRatio;
-        this.fiveYearGrowthRate = fiveYearGrowthRate;
-        this.dividendGrowth = dividendGrowth;
+        //this.divYield = divYield;
+        //this.annualPayout = annualPayout;
+        //this.payoutRatio = payoutRatio;
+        //this.fiveYearGrowthRate = fiveYearGrowthRate;
+        //this.dividendGrowth = dividendGrowth;
         this.dividendPayMonth = dividendPayMonth;
         this.highestPrice = highestPrice;
         this.lowerPrice = lowerPrice;

@@ -22,7 +22,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                            "total_trading_amount/sum_trading_amount*100 AS protion, " +
                            "dividend_pay_month " +
                     " FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, s.sector, " +
-                           "       s.current_price, s.annual_payout, s.div_yield," +
+                           "       s.current_price, e.annual_payout, e.div_yield," +
                            "       s.dividend_pay_month, s.highest_price, s.lower_price, " +
                            "       ifnull(d.trading_amount, 0) AS trading_amount, " +
                            "       d.stock_num, d.unit_price, " +
@@ -47,12 +47,13 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                    "       (SUM(v.total_eval_amount) - SUM(v.total_trading_amount)) / SUM(v.total_trading_amount) * 100 AS earning_rate " +
                    "  FROM ( " +
                    "        SELECT p.ticker,  " +
-                   "               sum(d.stock_num*s.annual_payout) AS total_payout, " +
+                   "               sum(d.stock_num*e.annual_payout) AS total_payout, " +
                    "               sum(d.stock_num*d.unit_price) AS total_trading_amount , " +
                    "               sum(d.stock_num*s.current_price) AS total_eval_amount  " +
                    "          FROM portfolio p  " +
                    "               LEFT OUTER JOIN stock s ON p.ticker = s.ticker  " +
                    "               LEFT OUTER JOIN daybooks d ON p.ticker = d.ticker AND p.email = d.email  " +
+                   "               LEFT OUTER JOIN interested_stock e ON p.ticker = e.ticker AND p.email = e.email" +
                    "         WHERE p.email = :email " +
                    "         GROUP BY p.ticker " +
                    "       ) v", nativeQuery = true)
@@ -73,7 +74,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                     "              total_trading_amount/sum_trading_amount*100 AS protion, " +
                     "              dividend_pay_month " +
                     "         FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, s.sector, " +
-                    "                      s.current_price, s.annual_payout, s.div_yield," +
+                    "                      s.current_price, e.annual_payout, e.div_yield," +
                     "                      s.dividend_pay_month, s.highest_price, s.lower_price, " +
                     "                      ifnull(d.trading_amount, 0) AS trading_amount, " +
                     "                      d.stock_num, d.unit_price, " +

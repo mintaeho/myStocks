@@ -13,11 +13,11 @@ public class StockListDto {
     private String businessCycle;
     private String sector;
     private BigDecimal currentPrice;
-    private BigDecimal divYield;
-    private BigDecimal annualPayout;
-    private BigDecimal payoutRatio;
-    private BigDecimal fiveYearGrowthRate;
-    private Integer dividendGrowth;
+    //private BigDecimal divYield;
+    //private BigDecimal annualPayout;
+    //private BigDecimal payoutRatio;
+    //private BigDecimal fiveYearGrowthRate;
+    //private Integer dividendGrowth;
     private String dividendPayMonth;
 
     private LocalDateTime modifiedDate;
@@ -28,11 +28,11 @@ public class StockListDto {
         this.businessCycle = entity.getBusinessCycle();
         this.sector = entity.getSector();
         this.currentPrice = entity.getCurrentPrice();
-        this.divYield = entity.getDivYield();
-        this.annualPayout = entity.getAnnualPayout();
-        this.payoutRatio = entity.getPayoutRatio();
-        this.fiveYearGrowthRate = entity.getFiveYearGrowthRate();
-        this.dividendGrowth = entity.getDividendGrowth();
+        //this.divYield = entity.getDivYield();
+        //this.annualPayout = entity.getAnnualPayout();
+        //this.payoutRatio = entity.getPayoutRatio();
+        //this.fiveYearGrowthRate = entity.getFiveYearGrowthRate();
+        //this.dividendGrowth = entity.getDividendGrowth();
         this.dividendPayMonth = entity.getDividendPayMonth();
         this.modifiedDate = entity.getModifiedDate();
     }

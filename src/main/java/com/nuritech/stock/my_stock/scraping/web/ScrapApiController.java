@@ -68,26 +68,27 @@ public class ScrapApiController {
 
                 //log.debug("dividend info : {}", dividendInfo.getData().get(0).getAttributes().getDivYieldFwd());
 
-                String[] tmpDivPayMon = new String[4];
+                String tmpDivPayMon = "per months";
+                String[] tmpDivPayMonArr = new String[4];
 
                 if ( "O".equals(ticker) ) {
-                    tmpDivPayMon[0] = "per months";
                 } else {
                     int i=0;
                     for (DividendAttributeDto div : dividendInfo) {
                         if (i>=4) break;
                         log.debug(">>>div.getPaymentDate() {}", div.getPaymentDate());
-                        tmpDivPayMon[i++] = div.getPaymentDate().split("-")[1];
+                        tmpDivPayMonArr[i++] = div.getPaymentDate().split("-")[1];
                     }
-                    Arrays.sort(tmpDivPayMon);
+                    Arrays.sort(tmpDivPayMonArr);
+                    tmpDivPayMon = String.join(", ", tmpDivPayMon);
                 }
 
                 log.debug(">>>>tmpDivPayMon[]={}", String.join(",", tmpDivPayMon));
                 StockDto stockDto = StockDto.builder()
                         .ticker(realtimeInfo.getSymbol())
                         .stockNm(realtimeInfo.getCompanyName())
-                        .businessCycle("")
-                        .sector("")
+                        //.businessCycle("")
+                        //.sector("")
                         .currentPrice(realtimeInfo.getLatestPrice())
                         //.divYield()
                         //.annualPayout()
@@ -96,7 +97,7 @@ public class ScrapApiController {
                         //.dividendGrowth()
                         .highestPrice(realtimeInfo.getWeek52High())
                         .lowerPrice(realtimeInfo.getWeek52Low())
-                        .dividendPayMonth(String.join(",", tmpDivPayMon))
+                        .dividendPayMonth(tmpDivPayMon)
                         .build();
 
                 scrapService.stockSave(stockDto);
