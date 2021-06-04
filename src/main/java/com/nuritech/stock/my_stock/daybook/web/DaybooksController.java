@@ -22,6 +22,7 @@ public class DaybooksController {
     @GetMapping("/daybooks/v1")
     public String daybooks(Model model,
                            @LoginUser SessionUser user) {
+        // ???
         model.addAttribute("daybooks", daybooksService.findAllDesc());
         if (user != null) {
             model.addAttribute("userName", user.getName());
