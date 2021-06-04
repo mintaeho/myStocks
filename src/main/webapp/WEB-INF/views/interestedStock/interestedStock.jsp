@@ -35,8 +35,7 @@
                                             <th>배당금</th>
                                             <th>배당수익률</th>
                                             <th>배당월</th>
-                                            <th>52주최고가</th>
-                                            <th>52주최저가</th>
+                                            <th>52W Range</th>
                                             <th>평균가</th>
                                             <th>-10%하락</th>
                                             <th>-20%하락</th>
@@ -56,8 +55,7 @@
                                             <th>배당금</th>
                                             <th>배당수익률</th>
                                             <th>배당월</th>
-                                            <th>52주최고가</th>
-                                            <th>52주최저가</th>
+                                            <th>52W Range</th>
                                             <th>평균가</th>
                                             <th>-10%하락</th>
                                             <th>-20%하락</th>
@@ -87,8 +85,11 @@
                                                 <td class="text-right">${items.annualPayout}</td>
                                                 <td class="text-right">${items.divYield}</td>
                                                 <td class="text-center">${items.dividendPayMonth}</td>
-                                                <td class="text-right">${items.highestPrice}</td>
-                                                <td class="text-right">${items.lowerPrice}</td>
+                                                <td class="text-center">
+                                                    ${items.lowerPrice}
+                                                    <input type="range" value="${items.currentPrice}" min="${items.lowerPrice}" max="${items.highestPrice}">
+                                                    ${items.highestPrice}
+                                                </td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.avgPrice}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.under10Price}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.under20Price}" pattern="#,###.##"/></td>
