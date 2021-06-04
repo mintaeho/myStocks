@@ -103,8 +103,38 @@
     $(document).ready(function() {
       // initialise Datetimepicker and Sliders
       md.initFormExtendedDatetimepickers();
+      /*
       if ($('.slider').length != 0) {
         md.initSliders();
       }
+      */
+      $('.slider').each(function(index, item) {
+         console.log('item', item);
+         console.log('index', index);
+        console.log('value', $(item).attr('value'), 'min', $(item).attr('min'), 'max', $(item).attr('max'));
+
+          noUiSlider.create(item, {
+            start: eval($(item).attr('value')),
+            connect:  'lower',
+            range: {
+              min: eval($(item).attr('min')),
+              max: eval($(item).attr('max'))
+            }
+          });
+      });
+
+      /*
+          var slider = document.getElementById('sliderRegular');
+
+          noUiSlider.create(slider, {
+            start: 70,
+            connect: 'lower',
+            range: {
+              min: 0,
+              max: 100
+            }
+              });
+        */
+
     });
   </script>

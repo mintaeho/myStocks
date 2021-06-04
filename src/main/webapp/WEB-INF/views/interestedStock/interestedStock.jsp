@@ -86,9 +86,11 @@
                                                 <td class="text-right">${items.divYield}</td>
                                                 <td class="text-center">${items.dividendPayMonth}</td>
                                                 <td class="text-center">
-                                                    ${items.lowerPrice}
-                                                    <input type="range" value="${items.currentPrice}" min="${items.lowerPrice}" max="${items.highestPrice}">
-                                                    ${items.highestPrice}
+                                                    <div class="form-group">
+                                                        ${items.lowerPrice}
+                                                        <div class="slider" value="${items.currentPrice}" min="${items.lowerPrice}" max="${items.highestPrice}"></div>
+                                                        ${items.highestPrice}
+                                                    </div>
                                                 </td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.avgPrice}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.under10Price}" pattern="#,###.##"/></td>
