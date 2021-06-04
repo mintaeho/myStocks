@@ -69,12 +69,18 @@ public class ScrapApiController {
                 //log.debug("dividend info : {}", dividendInfo.getData().get(0).getAttributes().getDivYieldFwd());
 
                 String[] tmpDivPayMon = new String[4];
-                int i=0;
-                for (DividendAttributeDto div : dividendInfo) {
-                    log.debug(">>>div.getPaymentDate() {}", div.getPaymentDate());
-                    tmpDivPayMon[i++] = div.getPaymentDate().split("-")[1];
+
+                if ( "O".equals(ticker) ) {
+                    tmpDivPayMon[0] = "per months";
+                } else {
+                    int i=0;
+                    for (DividendAttributeDto div : dividendInfo) {
+                        if (i>=4) break;
+                        log.debug(">>>div.getPaymentDate() {}", div.getPaymentDate());
+                        tmpDivPayMon[i++] = div.getPaymentDate().split("-")[1];
+                    }
+                    Arrays.sort(tmpDivPayMon);
                 }
-                Arrays.sort(tmpDivPayMon);
 
                 log.debug(">>>>tmpDivPayMon[]={}", String.join(",", tmpDivPayMon));
                 StockDto stockDto = StockDto.builder()
