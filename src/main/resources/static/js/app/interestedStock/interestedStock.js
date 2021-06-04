@@ -75,7 +75,11 @@ var interestedStock = {
         var data = {
             ticker: $('#ticker').val(),
             stockNm: $('#stockNm').val(),
-            dividendPayMonth: $('#dividendPayMonth').val(),
+            divYield: $('#divYield').val(),
+            annualPayout: $('#annualPayout').val(),
+            payoutRatio: $('#payoutRatio').val(),
+            fiveYearGrowthRate: $('#fiveYearGrowthRate').val(),
+            dividendGrowth: $('#dividendGrowth').val(),
             businessCycle: $('#businessCycle').val(),
             nobilityStockYn: $('#nobilityStockYn').is(":checked")?"Y":"N",
             companyInfo: $('#companyInfo').val(),
