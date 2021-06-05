@@ -72,15 +72,15 @@
                                                 <td>
                                                     <a href="javascript:portfolio.popup_view_companyInfo('/companyInfo/v1/view/${items.ticker}')">${items.stockNm}</a>
                                                 </td>
-                                                <td class="text-right">${items.currentPrice}</td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.currentPrice}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.avgUnitPrice}" pattern="#,###.##"/></td>
-                                                <td class="text-right">${items.totalStockNum}</td>
-                                                <td class="text-right">${items.annualPayout}</td>
-                                                <td class="text-right">${items.totalPayout}</td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.totalStockNum}" pattern="#,###"/></td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.annualPayout}" pattern="#,###.##"/></td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.totalPayout}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.investmentDivYield}" pattern="#,###.##"/></td>
-                                                <td class="text-right">${items.totalTradingAmount}</td>
-                                                <td class="text-right">${items.evalAmount}</td>
-                                                <td class="text-right">${items.earningAmount}</td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.totalTradingAmount}" pattern="#,###.##"/></td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.evalAmount}" pattern="#,###.##"/></td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.earningAmount}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.earningRate}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.portion}" pattern="#,###.##"/></td>
                                                 <td class="text-center">${items.dividendPayMonth}</td>

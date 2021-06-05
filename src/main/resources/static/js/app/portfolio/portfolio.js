@@ -15,13 +15,13 @@ var portfolio = {
     },
     popup_reg_portfolio: function () {
         var url = "/portfolio/v1/save";
-        window.open(url, "popup_reg_portfolio", "width=400, height=600, resizable=no, scrollbars=no, location=no");
+        window.open(url, "popup_reg_portfolio", "width=400, height=250, resizable=no, scrollbars=no, location=no");
     },
     popup_mod_portfolio: function(url) {
-        window.open(url, "popup_mod_portfolio", "width=400, height=600, resizable=no, scrollbars=no, location=no");
+        window.open(url, "popup_mod_portfolio", "width=400, height=250, resizable=no, scrollbars=no, location=no");
     },
     popup_view_companyInfo: function(url) {
-        window.open(url, "popup_view_companyInfo", "width=400, height=600, resizable=no, scrollbars=no, location=no");
+        window.open(url, "popup_view_companyInfo", "width=800, height=600, resizable=no, scrollbars=no, location=no");
     },
     save : function () {
         var data = {
