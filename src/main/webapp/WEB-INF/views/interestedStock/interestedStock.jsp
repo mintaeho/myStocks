@@ -26,18 +26,17 @@
                                         <tr>
                                             <th>경기순환</th>
                                             <th>섹터</th>
-
                                             <th>티커</th>
                                             <th>종목명</th>
                                             <th>표시</th>
-
                                             <th>현재가</th>
                                             <th>배당성향</th>
                                             <th>배당수익률</th>
-
                                             <th>배당금</th>
                                             <th>배당월</th>
                                             <th>52W Range</th>
+                                            <th>최저가</th>
+                                            <th>최고가</th>
                                             <th>평균가</th>
                                             <th>-10%하락</th>
                                             <th>-20%하락</th>
@@ -51,14 +50,14 @@
                                             <th>티커</th>
                                             <th>종목명</th>
                                             <th>표시</th>
-
                                             <th>현재가</th>
                                             <th>배당성향</th>
                                             <th>배당수익률</th>
-
                                             <th>배당금</th>
                                             <th>배당월</th>
                                             <th>52W Range</th>
+                                            <th>최저가</th>
+                                            <th>최고가</th>
                                             <th>평균가</th>
                                             <th>-10%하락</th>
                                             <th>-20%하락</th>
@@ -90,11 +89,11 @@
                                                 <td class="text-center">${items.dividendPayMonth}</td>
                                                 <td class="text-center">
                                                     <div class="form-group">
-                                                        ${items.lowerPrice}
                                                         <div class="slider" value="${items.currentPrice}" min="${items.lowerPrice}" max="${items.highestPrice}"></div>
-                                                        ${items.highestPrice}
                                                     </div>
                                                 </td>
+                                                <td class="text-center">${items.lowerPrice}</td>
+                                                <td class="text-center">${items.highestPrice}</td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.avgPrice}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.under10Price}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.under20Price}" pattern="#,###.##"/></td>
