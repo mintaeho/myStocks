@@ -72,6 +72,9 @@ public class ScrapApiController {
                 String[] tmpDivPayMonArr = new String[4];
 
                 if ( "O".equals(ticker) ) {
+
+                } else if ( "AMZN".equals(ticker) ) {
+                    tmpDivPayMon = "";
                 } else {
                     int i=0;
                     for (DividendAttributeDto div : dividendInfo) {
@@ -79,8 +82,13 @@ public class ScrapApiController {
                         log.debug(">>>div.getPaymentDate() {}", div.getPaymentDate());
                         tmpDivPayMonArr[i++] = div.getPaymentDate().split("-")[1];
                     }
-                    Arrays.sort(tmpDivPayMonArr);
-                    tmpDivPayMon = String.join(", ", tmpDivPayMonArr);
+
+                    try {
+                        Arrays.sort(tmpDivPayMonArr);
+                        tmpDivPayMon = String.join(", ", tmpDivPayMonArr);
+                    } catch(Exception e) {
+                        tmpDivPayMon = "";
+                    }
                 }
 
                 log.debug(">>>>tmpDivPayMon[]={}", String.join(",", tmpDivPayMon));
