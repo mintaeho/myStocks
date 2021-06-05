@@ -19,7 +19,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                    "       total_trading_amount, " +
                    "       current_price * total_stock_num AS eval_amount, " +
                    "       (current_price * total_stock_num) - total_trading_amount AS earning_amount, " +
-                   "       ((current_price * total_stock_num) - total_trading_amount)/total_trading_amount AS earning_rate, " +
+                   "       ((current_price * total_stock_num) - total_trading_amount)/total_trading_amount * 100 AS earning_rate, " +
                    "       total_trading_amount/sum_trading_amount*100 AS protion, " +
                    "       dividend_pay_month " +
                    " FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, e.sector, " +
