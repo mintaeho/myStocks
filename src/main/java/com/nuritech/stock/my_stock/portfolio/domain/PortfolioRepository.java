@@ -11,32 +11,32 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
     @Query("SELECT p FROM Portfolio p")
     List<Portfolio> findAllDesc();
 
-    @Query(value = "SELECT v.ticker, v.stock_nm, business_cycle, sector," +
+    @Query(value = "SELECT v.ticker, v.stock_nm, business_cycle, sector, " +
                    "       current_price, avg_unit_price, total_stock_num, annual_payout, " +
                    "       total_stock_num * annual_payout AS total_payout, " +
                    "       annual_payout / avg_unit_price * 100 AS investment_div_yield, " +
                    "       total_trading_amount, " +
-                   "       current_price * total_stock_num AS eval_amount," +
-                   "       (current_price * total_stock_num) - total_trading_amount AS earning_amount," +
-                   "       ((current_price * total_stock_num) - total_trading_amount)/total_trading_amount AS earning_rate," +
+                   "       current_price * total_stock_num AS eval_amount, " +
+                   "       (current_price * total_stock_num) - total_trading_amount AS earning_amount, " +
+                   "       ((current_price * total_stock_num) - total_trading_amount)/total_trading_amount AS earning_rate, " +
                    "       total_trading_amount/sum_trading_amount*100 AS protion, " +
                    "       dividend_pay_month " +
                    " FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, e.sector, " +
-                   "              s.current_price, e.annual_payout, e.div_yield," +
+                   "              s.current_price, e.annual_payout, e.div_yield, " +
                    "              s.dividend_pay_month, s.highest_price, s.lower_price, " +
                    "              sum(d.unit_price*d.stock_num)/sum(d.stock_num)  AS avg_unit_price, " +
                    "              sum(d.stock_num)  AS total_stock_num, " +
-                   "              sum(ifnull(d.trading_amount, 0)) AS total_trading_amount" +
-                   "         FROM portfolio p" +
-                   "              LEFT OUTER JOIN stock s ON p.ticker = s.ticker" +
-                   "              LEFT OUTER JOIN daybooks d ON p.ticker = d.ticker AND p.email = d.email" +
-                   "              LEFT OUTER JOIN interested_stock e ON p.ticker = e.ticker AND p.email = e.email" +
-                   "        WHERE p.email = :email" +
-                   "        GROUP BY p.ticker" +
-                   "       ) v" +
-                   "       ,(SELECT SUM(trading_amount) AS sum_trading_amount FROM daybooks) t" +
-                   "GROUP BY v.ticker" +
-                   "ORDER BY business_cycle, sector, ticker", nativeQuery = true)
+                   "              sum(ifnull(d.trading_amount, 0)) AS total_trading_amount " +
+                   "         FROM portfolio p " +
+                   "              LEFT OUTER JOIN stock s ON p.ticker = s.ticker " +
+                   "              LEFT OUTER JOIN daybooks d ON p.ticker = d.ticker AND p.email = d.email " +
+                   "              LEFT OUTER JOIN interested_stock e ON p.ticker = e.ticker AND p.email = e.email " +
+                   "        WHERE p.email = :email " +
+                   "        GROUP BY p.ticker " +
+                   "       ) v " +
+                   "       ,(SELECT SUM(trading_amount) AS sum_trading_amount FROM daybooks) t " +
+                   "GROUP BY v.ticker " +
+                   "ORDER BY business_cycle, sector, ticker ", nativeQuery = true)
     List<Object[]> selectPortfolio(@Param("email") String email);
 
     @Query(value = "SELECT SUM(v.total_payout) AS total_payout, " +
