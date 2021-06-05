@@ -81,19 +81,19 @@
                                                     ${items.nobilityStockYn=='Y'?'**':''}
                                                 </td>
 
-                                                <td class="text-right">${items.currentPrice}</td>
-                                                <td class="text-right">${items.payoutRatio}</td>
-                                                <td class="text-right">${items.divYield}</td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.currentPrice}" pattern="#,###.##"/></td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.payoutRatio}" pattern="#,###.##"/></td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.divYield}" pattern="#,###.##"/></td>
 
-                                                <td class="text-right">${items.annualPayout}</td>
+                                                <td class="text-right"><fmt:formatNumber value="${items.annualPayout}" pattern="#,###.##"/></td>
                                                 <td class="text-center">${items.dividendPayMonth}</td>
                                                 <td class="text-center">
                                                     <div class="form-group">
                                                         <div class="slider" value="${items.currentPrice}" min="${items.lowerPrice}" max="${items.highestPrice}"></div>
                                                     </div>
                                                 </td>
-                                                <td class="text-center">${items.lowerPrice}</td>
-                                                <td class="text-center">${items.highestPrice}</td>
+                                                <td class="text-center"><fmt:formatNumber value="${items.lowerPrice}" pattern="#,###.##"/></td>
+                                                <td class="text-center"><fmt:formatNumber value="${items.highestPrice}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.avgPrice}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.under10Price}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.under20Price}" pattern="#,###.##"/></td>
