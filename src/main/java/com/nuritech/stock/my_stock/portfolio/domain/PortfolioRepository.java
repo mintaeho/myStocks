@@ -13,6 +13,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
 
     @Query(value = "SELECT v.ticker, v.stock_nm, business_cycle, sector, " +
                    "       current_price, avg_unit_price, total_stock_num, annual_payout, " +
+                   "       highest_price, lower_price, " +
                    "       total_stock_num * annual_payout AS total_payout, " +
                    "       annual_payout / avg_unit_price * 100 AS investment_div_yield, " +
                    "       total_trading_amount, " +

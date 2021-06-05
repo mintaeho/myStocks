@@ -28,6 +28,7 @@
                                             <th>티커</th>
                                             <th>종목명</th>
                                             <th>현재가</th>
+                                            <th>52W Range</th>
                                             <th>매입단가</th>
                                             <th>주식수</th>
                                             <th>주당배당금</th>
@@ -48,6 +49,7 @@
                                             <th>티커</th>
                                             <th>종목명</th>
                                             <th>현재가</th>
+                                            <th>52W Range</th>
                                             <th>매입단가</th>
                                             <th>주식수</th>
                                             <th>주당배당금</th>
@@ -73,6 +75,11 @@
                                                     <a href="javascript:portfolio.popup_view_companyInfo('/companyInfo/v1/view/${items.ticker}')">${items.stockNm}</a>
                                                 </td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.currentPrice}" pattern="#,###.##"/></td>
+                                                <td class="text-center">
+                                                    <div class="form-group">
+                                                        <div class="slider" value="${items.currentPrice}" min="${items.lowerPrice}" max="${items.highestPrice}"></div>
+                                                    </div>
+                                                </td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.avgUnitPrice}" pattern="#,###.##"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.totalStockNum}" pattern="#,###"/></td>
                                                 <td class="text-right"><fmt:formatNumber value="${items.annualPayout}" pattern="#,###.##"/></td>

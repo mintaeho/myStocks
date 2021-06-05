@@ -16,6 +16,8 @@ public class PortfolioListExpandedDto {
     private String businessCycle;
     private String sector;
     private BigDecimal currentPrice;
+    private BigDecimal highestPrice;
+    private BigDecimal lowerPrice;
     private BigDecimal avgUnitPrice;
     private BigDecimal totalStockNum;
     private BigDecimal annualPayout;
@@ -36,6 +38,8 @@ public class PortfolioListExpandedDto {
                                     String businessCycle,
                                     String sector,
                                     BigDecimal currentPrice,
+                                    BigDecimal highestPrice,
+                                    BigDecimal lowerPrice,
                                     BigDecimal avgUnitPrice,
                                     BigDecimal totalStockNum,
                                     BigDecimal annualPayout,
@@ -52,6 +56,8 @@ public class PortfolioListExpandedDto {
         this.businessCycle = businessCycle;
         this.sector = sector;
         this.currentPrice = currentPrice;
+        this.highestPrice = highestPrice;
+        this.lowerPrice = lowerPrice;
         this.avgUnitPrice = avgUnitPrice;
         this.totalStockNum = totalStockNum;
         this.annualPayout = annualPayout;
@@ -78,14 +84,16 @@ public class PortfolioListExpandedDto {
                     .avgUnitPrice((BigDecimal) obj[5])
                     .totalStockNum((BigDecimal) obj[6])
                     .annualPayout((BigDecimal) obj[7])
-                    .totalPayout((BigDecimal) obj[8])
-                    .investmentDivYield((BigDecimal) obj[9])
-                    .totalTradingAmount((BigDecimal) obj[10])
-                    .evalAmount((BigDecimal) obj[11])
-                    .earningAmount((BigDecimal) obj[12])
-                    .earningRate((BigDecimal) obj[13])
-                    .portion((BigDecimal) obj[14])
-                    .dividendPayMonth((String) obj[15])
+                    .highestPrice((BigDecimal) obj[8])
+                    .lowerPrice((BigDecimal) obj[9])
+                    .totalPayout((BigDecimal) obj[10])
+                    .investmentDivYield((BigDecimal) obj[11])
+                    .totalTradingAmount((BigDecimal) obj[12])
+                    .evalAmount((BigDecimal) obj[13])
+                    .earningAmount((BigDecimal) obj[14])
+                    .earningRate((BigDecimal) obj[15])
+                    .portion((BigDecimal) obj[16])
+                    .dividendPayMonth((String) obj[17])
                     .build());
         }
         return list;
