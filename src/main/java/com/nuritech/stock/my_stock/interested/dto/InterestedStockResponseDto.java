@@ -11,6 +11,7 @@ public class InterestedStockResponseDto {
     private String ticker;
     private String stockNm;
     private String businessCycle;
+    private String sector;
     private String nobilityStockYn;
     private BigDecimal divYield;
     private BigDecimal annualPayout;
@@ -24,6 +25,7 @@ public class InterestedStockResponseDto {
         this.ticker = entity.getInterestedStockId().getTicker();
         this.stockNm = entity.getStockNm();
         this.businessCycle = entity.getBusinessCycle();
+        this.sector = entity.getSector();
         this.nobilityStockYn = entity.getNobilityStockYn();
         this.divYield = entity.getDivYield();
         this.annualPayout = entity.getAnnualPayout();

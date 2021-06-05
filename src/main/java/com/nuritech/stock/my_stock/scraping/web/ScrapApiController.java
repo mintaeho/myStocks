@@ -80,7 +80,7 @@ public class ScrapApiController {
                         tmpDivPayMonArr[i++] = div.getPaymentDate().split("-")[1];
                     }
                     Arrays.sort(tmpDivPayMonArr);
-                    tmpDivPayMon = String.join(", ", tmpDivPayMon);
+                    tmpDivPayMon = String.join(", ", tmpDivPayMonArr);
                 }
 
                 log.debug(">>>>tmpDivPayMon[]={}", String.join(",", tmpDivPayMon));

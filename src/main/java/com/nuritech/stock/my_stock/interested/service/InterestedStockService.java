@@ -31,7 +31,8 @@ public class InterestedStockService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 종목이 없습니다. 티커="+stockId.getTicker()));
         stock.update(stockId,
                      requestDto.getStockNm(),
-                     requestDto.getBusinessCycle(),
+                requestDto.getBusinessCycle(),
+                requestDto.getSector(),
                      requestDto.getNobilityStockYn(),
                      requestDto.getDivYield(),
                     requestDto.getAnnualPayout(),

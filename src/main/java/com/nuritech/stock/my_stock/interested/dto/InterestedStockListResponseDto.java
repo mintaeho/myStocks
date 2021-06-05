@@ -11,6 +11,7 @@ public class InterestedStockListResponseDto {
     private String ticker;
     private String stockNm;
     private String businessCycle;
+    private String sector;
     private LocalDateTime modifiedDate;
 
 
@@ -19,6 +20,7 @@ public class InterestedStockListResponseDto {
         this.ticker = entity.getInterestedStockId().getTicker();
         this.stockNm = entity.getStockNm();
         this.businessCycle = entity.getBusinessCycle();
+        this.sector = entity.getSector();
         this.modifiedDate = entity.getModifiedDate();
     }
 

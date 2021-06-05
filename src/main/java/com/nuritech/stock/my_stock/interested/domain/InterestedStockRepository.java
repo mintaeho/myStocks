@@ -11,7 +11,7 @@ public interface InterestedStockRepository extends JpaRepository<InterestedStock
     @Query("SELECT p FROM InterestedStock p ORDER BY p.stockNm DESC")
     List<InterestedStock> findAllDesc();
 
-    @Query(value = "SELECT p.ticker, s.stock_nm, p.business_cycle, s.sector, " +
+    @Query(value = "SELECT p.ticker, s.stock_nm, p.business_cycle, p.sector, " +
                    "       s.current_price, p.payout_ratio, p.annual_payout, p.div_yield," +
                    "       s.dividend_pay_month, s.highest_price, s.lower_price, " +
                    "       (s.highest_price+s.lower_price)/2 as avg_price, " +

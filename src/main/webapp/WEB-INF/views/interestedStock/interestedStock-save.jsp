@@ -38,7 +38,24 @@
                                 <label for="배당월" class="bmd-label-floating">배당성장년수</label>
                                 <input type="input" class="form-control" id="dividendGrowth">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
+                                <select class="selectpicker" data-style="select-with-transition"
+                                        title="섹터" data-size="7"
+                                        id="sector">
+                                    <option value="금융" selected>금융</option>
+                                    <option value="부동산">부동산</option>
+                                    <option value="자유소비재">자유소비재</option>
+                                    <option value="산업재">산업재</option>
+                                    <option value="정보기술">정보기술</option>
+                                    <option value="커뮤니케이션">커뮤니케이션</option>
+                                    <option value="소재">소재</option>
+                                    <option value="에너지">에너지</option>
+                                    <option value="필수소비재">필수소비재</option>
+                                    <option value="헬스케어">헬스케어</option>
+                                    <option value="유틸리티">유틸리티</option>
+                                </select>
+                            </div>
+                            <div class="form-group row">
                                 <select class="selectpicker" data-style="select-with-transition"
                                         title="경기순환" data-size="7"
                                         id="businessCycle">

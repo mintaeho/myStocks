@@ -54,6 +54,7 @@ var interestedStock = {
             fiveYearGrowthRate: $('#fiveYearGrowthRate').val(),
             dividendGrowth: $('#dividendGrowth').val(),
             businessCycle: $('#businessCycle').val(),
+            sector: $('#sector').val(),
             nobilityStockYn: $('#nobilityStockYn').is(":checked")?"Y":"N",
             companyInfo: $('#companyInfo').val(),
         };
@@ -65,8 +66,7 @@ var interestedStock = {
             data: JSON.stringify(data)
         }).done(function() {
             alert('관심종목이 등록되었습니다.');
-            //window.location.href = '/interestedStock/v1';
-            opener.location.href = "/interestedStock/v1";
+            window.opener.location.reload();
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
@@ -81,6 +81,7 @@ var interestedStock = {
             fiveYearGrowthRate: $('#fiveYearGrowthRate').val(),
             dividendGrowth: $('#dividendGrowth').val(),
             businessCycle: $('#businessCycle').val(),
+            sector: $('#sector').val(),
             nobilityStockYn: $('#nobilityStockYn').is(":checked")?"Y":"N",
             companyInfo: $('#companyInfo').val(),
         };
@@ -94,8 +95,7 @@ var interestedStock = {
             data: JSON.stringify(data)
         }).done(function() {
             alert('관심종목이 수정되었습니다.');
-            //window.location.href = '/interestedStock/v1';
-            opener.location.href = "/interestedStock/v1";
+            window.opener.location.reload();
             window.close();
         }).fail(function (error) {
             alert(JSON.stringify(error));
@@ -110,8 +110,7 @@ var interestedStock = {
             contentType:'application/json; charset=utf-8'
         }).done(function() {
             alert('관심종목이 삭제되었습니다.');
-            //window.location.href = '/interestedStock/v1';
-            opener.location.href = "/interestedStock/v1";
+            window.opener.location.reload();
             window.close();
         }).fail(function (error) {
             alert(JSON.stringify(error));
@@ -131,8 +130,7 @@ var interestedStock = {
             data: $('#result').val()
         }).done(function() {
             alert('최신정보로 반영되었습니다.');
-            opener.location.href = "/interestedStock/v1";
-            window.close();
+            window.location.reload();
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });

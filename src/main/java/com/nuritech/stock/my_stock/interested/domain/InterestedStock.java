@@ -25,6 +25,9 @@ public class InterestedStock extends BaseTimeEntity {
     @Column(length = 100, nullable = true)
     private String businessCycle;
 
+    @Column(length = 100, nullable = true)
+    private String sector;
+
     @Column(length = 1, nullable = true)
     private String nobilityStockYn;
 
@@ -51,6 +54,7 @@ public class InterestedStock extends BaseTimeEntity {
     public InterestedStock(InterestedStockId interestedStockId,
                            String stockNm,
                            String businessCycle,
+                           String sector,
                            String nobilityStockYn,
                            BigDecimal divYield,
                            BigDecimal annualPayout,
@@ -61,6 +65,7 @@ public class InterestedStock extends BaseTimeEntity {
         this.interestedStockId = interestedStockId;
         this.stockNm = stockNm;
         this.businessCycle = businessCycle;
+        this.sector = sector;
         this.nobilityStockYn = nobilityStockYn;
         this.divYield = divYield;
         this.annualPayout = annualPayout;
@@ -73,6 +78,7 @@ public class InterestedStock extends BaseTimeEntity {
     public void update(InterestedStockId interestedStockId,
                        String stockNm,
                        String businessCycle,
+                       String sector,
                        String nobilityStockYn,
                        BigDecimal divYield,
                        BigDecimal annualPayout,
@@ -83,6 +89,7 @@ public class InterestedStock extends BaseTimeEntity {
         this.interestedStockId = interestedStockId;
         this.stockNm = stockNm;
         this.businessCycle = businessCycle;
+        this.sector = sector;
         this.nobilityStockYn = nobilityStockYn;
         this.divYield = divYield;
         this.annualPayout = annualPayout;

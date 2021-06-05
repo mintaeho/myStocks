@@ -24,16 +24,18 @@
                                 <table id="datatables" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th>경기순환</th>
+                                            <th>섹터</th>
+
                                             <th>티커</th>
                                             <th>종목명</th>
                                             <th>표시</th>
-                                            <th>경기순환</th>
-                                            <th>섹터</th>
+
                                             <th>현재가</th>
                                             <th>배당성향</th>
-                                            <th>배당금</th>
                                             <th>배당수익률</th>
+
+                                            <th>배당금</th>
                                             <th>배당월</th>
                                             <th>52W Range</th>
                                             <th>평균가</th>
@@ -44,16 +46,17 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>No</th>
+                                            <th>경기순환</th>
+                                            <th>섹터</th>
                                             <th>티커</th>
                                             <th>종목명</th>
                                             <th>표시</th>
-                                            <th>경기순환</th>
-                                            <th>섹터</th>
+
                                             <th>현재가</th>
                                             <th>배당성향</th>
-                                            <th>배당금</th>
                                             <th>배당수익률</th>
+
+                                            <th>배당금</th>
                                             <th>배당월</th>
                                             <th>52W Range</th>
                                             <th>평균가</th>
@@ -65,9 +68,9 @@
                                     <tbody>
                                         <c:forEach var="items" items="${interestedStocks}" varStatus="status">
                                             <tr>
-                                                <td class="text-center">
-                                                    <a href="javascript:interestedStock.popup_get_currentInfo('/currentInfo/v1/${items.ticker}')">${status.count}</a>
-                                                </td>
+                                                <td class="text-center">${items.businessCycle}</td>
+                                                <td class="text-center">${items.sector}</td>
+
                                                 <td class="text-center">
                                                     <a href="javascript:interestedStock.popup_mod_interestedStock('/interestedStock/v1/update/${items.ticker}')">${items.ticker}</a>
                                                 </td>
@@ -78,12 +81,12 @@
                                                     ${items.buyingYn=='Y'?'*':''} /
                                                     ${items.nobilityStockYn=='Y'?'**':''}
                                                 </td>
-                                                <td class="text-center">${items.businessCycle}</td>
-                                                <td class="text-center">${items.sector}</td>
+
                                                 <td class="text-right">${items.currentPrice}</td>
                                                 <td class="text-right">${items.payoutRatio}</td>
-                                                <td class="text-right">${items.annualPayout}</td>
                                                 <td class="text-right">${items.divYield}</td>
+
+                                                <td class="text-right">${items.annualPayout}</td>
                                                 <td class="text-center">${items.dividendPayMonth}</td>
                                                 <td class="text-center">
                                                     <div class="form-group">

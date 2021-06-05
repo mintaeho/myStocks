@@ -40,6 +40,23 @@
                             </div>
                             <div class="form-group">
                                 <select class="selectpicker" data-style="select-with-transition"
+                                        title="섹터" data-size="7"
+                                        id="sector">
+                                    <option value="금융" ${interestedStock.sector=='금융'?'selected':''}>금융</option>
+                                    <option value="부동산" ${interestedStock.sector=='부동산'?'selected':''}>부동산</option>
+                                    <option value="자유소비재" ${interestedStock.sector=='자유소비재'?'selected':''}>자유소비재</option>
+                                    <option value="산업재" ${interestedStock.sector=='산업재'?'selected':''}>산업재</option>
+                                    <option value="정보기술" ${interestedStock.sector=='정보기술'?'selected':''}>정보기술</option>
+                                    <option value="커뮤니케이션" ${interestedStock.sector=='커뮤니케이션'?'selected':''}>커뮤니케이션</option>
+                                    <option value="소재" ${interestedStock.sector=='소재'?'selected':''}>소재</option>
+                                    <option value="에너지" ${interestedStock.sector=='에너지'?'selected':''}>에너지</option>
+                                    <option value="필수소비재" ${interestedStock.sector=='필수소비재'?'selected':''}>필수소비재</option>
+                                    <option value="헬스케어" ${interestedStock.sector=='헬스케어'?'selected':''}>헬스케어</option>
+                                    <option value="유틸리티" ${interestedStock.sector=='유틸리티'?'selected':''}>유틸리티</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="selectpicker" data-style="select-with-transition"
                                         title="경기순환" data-size="7"
                                         id="businessCycle">
                                     <option value="회복" ${interestedStock.businessCycle=='회복'?'selected':''}>회복</option>

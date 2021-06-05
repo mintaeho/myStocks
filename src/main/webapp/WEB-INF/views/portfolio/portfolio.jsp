@@ -23,7 +23,6 @@
                                 <table id="datatables" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th class="disabled-sorting text-right">No</th>
                                             <th>경기<br/>순환</th>
                                             <th>섹터</th>
                                             <th>티커</th>
@@ -44,7 +43,6 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>No</th>
                                             <th>경기<br/>순환</th>
                                             <th>섹터</th>
                                             <th>티커</th>
@@ -66,7 +64,6 @@
                                     <tbody>
                                         <c:forEach var="items" items="${portfolio}" varStatus="status">
                                             <tr>
-                                                <td>${status.count}</td>
                                                 <td>${items.businessCycle}</td>
                                                 <td>${items.sector}</td>
                                                 <td>

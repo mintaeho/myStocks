@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 public class InterestedStockUpdateRequestDto {
     private String stockNm;
     private String businessCycle;
+    private String sector;
     private String nobilityStockYn;
     private BigDecimal divYield;
     private BigDecimal annualPayout;
@@ -22,6 +23,7 @@ public class InterestedStockUpdateRequestDto {
     @Builder
     public InterestedStockUpdateRequestDto(String stockNm,
                                            String businessCycle,
+                                           String sector,
                                            String nobilityStockYn,
                                            BigDecimal divYield,
                                            BigDecimal annualPayout,
@@ -31,6 +33,7 @@ public class InterestedStockUpdateRequestDto {
                                            String companyInfo) {
         this.stockNm = stockNm;
         this.businessCycle = businessCycle;
+        this.sector = sector;
         this.nobilityStockYn = nobilityStockYn;
         this.divYield = divYield;
         this.annualPayout = annualPayout;
