@@ -21,7 +21,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                            "((current_price * total_stock_num) - total_trading_amount)/total_trading_amount AS earning_rate," +
                            "total_trading_amount/sum_trading_amount*100 AS protion, " +
                            "dividend_pay_month " +
-                    " FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, s.sector, " +
+                    " FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, e.sector, " +
                            "       s.current_price, e.annual_payout, e.div_yield," +
                            "       s.dividend_pay_month, s.highest_price, s.lower_price, " +
                            "       ifnull(d.trading_amount, 0) AS trading_amount, " +
@@ -61,7 +61,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
 
     @Query(value =  "SELECT x.dividend_pay_month, " +
                     "       SUM(x.total_payout) AS total_payout, " +
-                    "       SUM(x.total_payout)/ CASE WHEN x.dividend_pay_month='매월' THEN 12 ELSE 4 END AS payout_month " +
+                    "       SUM(x.total_payout)/ CASE WHEN x.dividend_pay_month='per months' THEN 12 ELSE 4 END AS payout_month " +
                     "  FROM( " +
                     "       SELECT v.ticker, v.stock_nm, business_cycle, sector," +
                     "              current_price, avg_unit_price, total_stock_num, annual_payout, " +
@@ -73,7 +73,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                     "              ((current_price * total_stock_num) - total_trading_amount)/total_trading_amount AS earning_rate," +
                     "              total_trading_amount/sum_trading_amount*100 AS protion, " +
                     "              dividend_pay_month " +
-                    "         FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, s.sector, " +
+                    "         FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, e.sector, " +
                     "                      s.current_price, e.annual_payout, e.div_yield," +
                     "                      s.dividend_pay_month, s.highest_price, s.lower_price, " +
                     "                      ifnull(d.trading_amount, 0) AS trading_amount, " +

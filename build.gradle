@@ -60,5 +60,6 @@ dependencies {
     compile('com.google.code.gson:gson:2.8.5')
 
     implementation 'org.apache.httpcomponents:httpclient:4.5'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
 
 }

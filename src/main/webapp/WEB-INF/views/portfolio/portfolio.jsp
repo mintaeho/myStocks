@@ -180,6 +180,36 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>1월</th>
+                                            <th>2월</th>
+                                            <th>3월</th>
+                                            <th>4월</th>
+                                            <th>5월</th>
+                                            <th>6월</th>
+                                            <th>7월</th>
+                                            <th>8월</th>
+                                            <th>9월</th>
+                                            <th>10월</th>
+                                            <th>11월</th>
+                                            <th>12월</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <c:forEach var="items" items="${summaryPayoutMonthly}" varStatus="status">
+                                                <td class="text-center"><fmt:formatNumber value="${items.value}" pattern="#,###.##"/></td>
+                                            </c:forEach>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
                         </div>
                         <!-- end content-->
                     </div>
