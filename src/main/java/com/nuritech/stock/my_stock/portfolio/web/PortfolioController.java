@@ -11,6 +11,7 @@ import com.nuritech.stock.my_stock.portfolio.service.PortfolioService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,6 +55,7 @@ public class PortfolioController {
                 }
             }
             else {
+                StringUtils.defaultIfEmpty(dividendPayMonthStr, "");
                 String[] dividendPayMonthArr = dividendPayMonthStr.split(",");
                 for (int i = 0; i < dividendPayMonthArr.length; i++) {
                     collectDividendPayoutMonthly(dividendPayMonthMap,
