@@ -55,12 +55,13 @@ public class PortfolioController {
                 }
             }
             else {
-                StringUtils.defaultIfEmpty(dividendPayMonthStr, "");
-                String[] dividendPayMonthArr = dividendPayMonthStr.split(",");
-                for (int i = 0; i < dividendPayMonthArr.length; i++) {
-                    collectDividendPayoutMonthly(dividendPayMonthMap,
-                            Integer.parseInt(dividendPayMonthArr[i].trim()),
-                            ObjectUtils.defaultIfNull(list.getPayoutMonth(), new BigDecimal("0")) );
+                if ( dividendPayMonthStr != null ) {
+                    String[] dividendPayMonthArr = dividendPayMonthStr.split(",");
+                    for (int i = 0; i < dividendPayMonthArr.length; i++) {
+                        collectDividendPayoutMonthly(dividendPayMonthMap,
+                                Integer.parseInt(dividendPayMonthArr[i].trim()),
+                                ObjectUtils.defaultIfNull(list.getPayoutMonth(), new BigDecimal("0")));
+                    }
                 }
             }
         });
