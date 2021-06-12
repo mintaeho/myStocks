@@ -7,7 +7,7 @@
         <tiles:insertAttribute name="headerDiv" />
     </head>
 
-<body class="">
+<body class="sidebar-mini">
   <div class="wrapper ">
     <tiles:insertAttribute name="sidebarDiv" />
 
