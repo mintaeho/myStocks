@@ -74,16 +74,16 @@ public class ScrapApiController {
                 if (ObjectUtils.isEmpty(stockDtoInfo) ||
                     StringUtils.isEmpty(stockDtoInfo.getDividendPayMonth()) ) {
 
-                    // 배당정보 API 호출
-                    Gson gson2 = new Gson();
-                    DividendAttributeDto[] dividendInfo = gson2.fromJson(getDividendInfo(ticker).toString(),
-                            DividendAttributeDto[].class);
-
                     if ("O".equals(ticker)) {
                         tmpDivPayMon = "per months";
                     } else if ("AMZN".equals(ticker)) {
                         tmpDivPayMon = "";
                     } else {
+                            // 배당정보 API 호출
+                            Gson gson2 = new Gson();
+                            DividendAttributeDto[] dividendInfo = gson2.fromJson(getDividendInfo(ticker).toString(),
+                                    DividendAttributeDto[].class);
+
                         tmpDivPayMon = conversionDivPayMonStr(dividendInfo);
                     }
                 }

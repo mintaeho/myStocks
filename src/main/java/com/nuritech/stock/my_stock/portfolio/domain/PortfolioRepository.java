@@ -59,7 +59,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                    "       ) v", nativeQuery = true)
     List<Object[]> selectSumPortfolio(@Param("email") String email);
 
-    @Query(value =  "SELECT e.dividend_pay_month, " +
+    @Query(value =  "SELECT s.dividend_pay_month, " +
                     "       sum(d.stock_num*e.annual_payout) AS total_payout, " +
                     "       sum(d.stock_num*e.annual_payout) / CASE WHEN e.dividend_pay_month='per months' THEN 12 ELSE 4 END AS payout_month " +
                     "  FROM portfolio p " +
@@ -67,7 +67,8 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                     "       LEFT OUTER JOIN daybooks d ON p.ticker = d.ticker AND p.email = d.email " +
                     "       LEFT OUTER JOIN interested_stock e ON p.ticker = e.ticker AND p.email = e.email " +
                     " WHERE p.email = :email " +
-                    " GROUP BY e.dividend_pay_month ", nativeQuery = true)
+                    "   AND s.dividend_pay_month != '' " +
+                    " GROUP BY s.dividend_pay_month ", nativeQuery = true)
     List<Object[]> selectSummaryPayoutPerMonth(@Param("email") String email);
 
 }
