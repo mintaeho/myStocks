@@ -14,6 +14,8 @@ import com.nuritech.stock.my_stock.scraping.dto.DividendDataDto;
 import com.nuritech.stock.my_stock.scraping.dto.RealtimeDataDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
@@ -58,37 +60,35 @@ public class ScrapApiController {
 
             String ticker = list.getTicker();
             try {
+
+                // 주식정보 API 호출
                 Gson gson = new Gson();
                 RealtimeDataDto realtimeInfo = gson.fromJson(getRealTimeInfo(ticker).toString(),
                         RealtimeDataDto.class);
 
-                Gson gson2 = new Gson();
-                DividendAttributeDto[] dividendInfo = gson2.fromJson(getDividendInfo(ticker).toString(),
-                        DividendAttributeDto[].class);
+                // 저장된 Stock 정보 조회
+                StockDto stockDtoInfo = scrapService.findById(ticker);
 
-                //log.debug("dividend info : {}", dividendInfo.getData().get(0).getAttributes().getDivYieldFwd());
+                String tmpDivPayMon = "";   //배당지급일 변환을 위한 임시변수
 
-                String tmpDivPayMon = "per months";
-                String[] tmpDivPayMonArr = new String[4];
+                if (ObjectUtils.isEmpty(stockDtoInfo) ||
+                    StringUtils.isEmpty(stockDtoInfo.getDividendPayMonth()) ) {
 
-                if ( "O".equals(ticker) ) {
+                    // 배당정보 API 호출
+                    Gson gson2 = new Gson();
+                    DividendAttributeDto[] dividendInfo = gson2.fromJson(getDividendInfo(ticker).toString(),
+                            DividendAttributeDto[].class);
 
-                } else if ( "AMZN".equals(ticker) ) {
-                    tmpDivPayMon = "";
-                } else {
-                    int i=0;
-                    for (DividendAttributeDto div : dividendInfo) {
-                        if (i>=4) break;
-                        log.debug(">>>div.getPaymentDate() {}", div.getPaymentDate());
-                        tmpDivPayMonArr[i++] = div.getPaymentDate().split("-")[1];
-                    }
-
-                    try {
-                        Arrays.sort(tmpDivPayMonArr);
-                        tmpDivPayMon = String.join(", ", tmpDivPayMonArr);
-                    } catch(Exception e) {
+                    if ("O".equals(ticker)) {
+                        tmpDivPayMon = "per months";
+                    } else if ("AMZN".equals(ticker)) {
                         tmpDivPayMon = "";
+                    } else {
+                        tmpDivPayMon = conversionDivPayMonStr(dividendInfo);
                     }
+                }
+                else {
+                    tmpDivPayMon = stockDtoInfo.getDividendPayMonth();
                 }
 
                 log.debug(">>>>tmpDivPayMon[]={}", String.join(",", tmpDivPayMon));
@@ -120,6 +120,32 @@ public class ScrapApiController {
 
         //return postsService.save(requestDto);
         return "SUCCESS";
+    }
+
+    /**
+     * 배당정보 API 호출 결과로 배당월 String을 리턴한다.
+     * @param dividendInfo
+     * @return
+     */
+    private String conversionDivPayMonStr(DividendAttributeDto[] dividendInfo) {
+        String tmpDivPayMon = "";
+        String[] tmpDivPayMonArr = new String[4];
+
+        int i=0;
+        for (DividendAttributeDto div : dividendInfo) {
+            if (i>=4) break;
+            log.debug(">>>div.getPaymentDate() {}", div.getPaymentDate());
+            tmpDivPayMonArr[i++] = div.getPaymentDate().split("-")[1];
+        }
+
+        try {
+            Arrays.sort(tmpDivPayMonArr);
+            tmpDivPayMon = String.join(", ", tmpDivPayMonArr);
+        } catch(Exception e) {
+            tmpDivPayMon = "";
+        }
+
+        return tmpDivPayMon;
     }
 
     private StringBuilder getRealTimeInfo(String ticker) {
@@ -204,7 +230,7 @@ public class ScrapApiController {
         DividendAttributeDto param = new DividendAttributeDto();
         return new StringBuilder().append(DIVIDEND_INFO_URL)
                 .append(ticker)
-                .append("/dividends/1y?token=")
+                .append("/dividends/2y?token=")
                 .append(IEXCLOUD_API_TOKEN).toString();
     }
 

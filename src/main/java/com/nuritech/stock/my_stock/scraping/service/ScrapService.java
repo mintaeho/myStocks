@@ -1,5 +1,6 @@
 package com.nuritech.stock.my_stock.scraping.service;
 
+import com.nuritech.stock.my_stock.scraping.domain.Stock;
 import com.nuritech.stock.my_stock.scraping.domain.StockRepository;
 import com.nuritech.stock.my_stock.scraping.dto.StockDto;
 import com.nuritech.stock.my_stock.scraping.dto.StockListDto;
@@ -39,14 +40,15 @@ public class ScrapService {
         postsRepository.delete(posts);
     }
 
-    @Transactional(readOnly = true)
-    public PostsResponseDto findById(Long id) {
-        Posts entity = postsRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
-        return new PostsResponseDto(entity);
-    }
+
 
      */
+    @Transactional(readOnly = true)
+    public StockDto findById(String ticker) {
+        Stock entity = stockRepository.findById(ticker)
+                .orElseThrow(() -> new IllegalArgumentException("해당 종목이 없습니다. ticker="+ticker));
+        return new StockDto(entity);
+    }
 
     @Transactional(readOnly = true)
     public List<StockListDto> findAllDesc() {

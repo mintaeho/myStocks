@@ -1,5 +1,6 @@
 package com.nuritech.stock.my_stock.scraping.dto;
 
+import com.nuritech.stock.my_stock.exercise.book.domain.posts.Posts;
 import com.nuritech.stock.my_stock.scraping.domain.Stock;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,6 +25,17 @@ public class StockDto {
     private String dividendPayMonth;
     private BigDecimal highestPrice;
     private BigDecimal lowerPrice;
+
+    public StockDto(Stock entity) {
+        this.ticker = entity.getTicker();
+        this.stockNm = entity.getStockNm();
+        this.businessCycle = entity.getBusinessCycle();
+        this.sector = entity.getSector();
+        this.currentPrice = entity.getCurrentPrice();
+        this.dividendPayMonth = entity.getDividendPayMonth();
+        this.highestPrice = entity.getHighestPrice();
+        this.lowerPrice = entity.getLowerPrice();
+    }
 
     @Builder
     public StockDto(String ticker,
