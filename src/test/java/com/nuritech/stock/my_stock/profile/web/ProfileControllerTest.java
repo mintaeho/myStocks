@@ -21,6 +21,11 @@ public class ProfileControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    /**
+     * 스프링시큐리티 설정이 잘 되어 있는지 테스트 코드로 검증
+     * 스프링시큐리티 설정을 불러와야 해서 @SpringBootTest를 사용하는 테스트 클래스에 추가
+     * @throws Exception
+     */
     @Test
     public void profile은_인증없이_호출된다() throws Exception {
         String expected = "default";
