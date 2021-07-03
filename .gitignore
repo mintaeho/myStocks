@@ -78,3 +78,5 @@ application.properties
 
 # Project exclude paths
 /.gradle/
+/src/main/resources/application-real1.properties
+/src/main/resources/application-real2.properties
