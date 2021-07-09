@@ -12,13 +12,13 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" id="tradingType" name="tradingType" value="매수" checked> 매수
+                                <input class="form-check-input" type="radio" name="tradingType" value="매수" checked> 매수
                                 <span class="circle">
                                     <span class="check"></span>
                                 </span>
                             </label>
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" id="tradingType" name="tradingType" value="매도"> 매도
+                                <input class="form-check-input" type="radio" name="tradingType" value="매도"> 매도
                                 <span class="circle">
                                     <span class="check"></span>
                                 </span>

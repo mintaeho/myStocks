@@ -31,7 +31,7 @@ var daybooks = {
             ticker: $('#ticker').val(),
             unitPrice: $('#unitPrice').val(),
             stockNum: $('#stockNum').val(),
-            tradingType: $('#tradingType').val(),
+            tradingType: $("input[name='tradingType']:checked").val(),
             fee: $('#fee').val(),
             exchangeRate: $('#exchangeRate').val(),
             tradingAmount: $('#unitPrice').val() * $('#stockNum').val(),
