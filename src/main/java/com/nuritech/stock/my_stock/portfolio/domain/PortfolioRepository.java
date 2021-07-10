@@ -25,9 +25,12 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                    " FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, e.sector, " +
                    "              s.current_price, e.annual_payout, e.div_yield, " +
                    "              s.dividend_pay_month, s.highest_price, s.lower_price, " +
-                   "              sum(d.unit_price*d.stock_num)/sum(d.stock_num)  AS avg_unit_price, " +
+                   "              SUM(case when d.trading_type='매수' then d.unit_price*d.stock_num ELSE 0 END) / " +
+                   "                  SUM(case when d.trading_type='매수' then d.stock_num ELSE 0 END) AS avg_unit_price, " +
                    "              sum(d.stock_num)  AS total_stock_num, " +
                    "              sum(ifnull(d.trading_amount, 0)) AS total_trading_amount " +
+                   "              sum(CASE WHEN d.trading_type='매수' then d.stock_num ELSE 0 END) buy_num " +
+                   "              sum(CASE WHEN d.trading_type='매도' then d.stock_num ELSE 0 END) sell_num " +
                    "         FROM portfolio p " +
                    "              LEFT OUTER JOIN stock s ON p.ticker = s.ticker " +
                    "              LEFT OUTER JOIN daybooks d ON p.ticker = d.ticker AND p.email = d.email " +
@@ -47,9 +50,12 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                    "       (SUM(v.total_eval_amount) - SUM(v.total_trading_amount)) / SUM(v.total_trading_amount) * 100 AS earning_rate " +
                    "  FROM ( " +
                    "        SELECT p.ticker,  " +
-                   "               sum(d.stock_num*e.annual_payout) AS total_payout, " +
-                   "               sum(d.stock_num*d.unit_price) AS total_trading_amount , " +
-                   "               sum(d.stock_num*s.current_price) AS total_eval_amount  " +
+                   "               ( sum(CASE WHEN d.trading_type='매수' then d.stock_num ELSE 0 END) " +
+                   "                     - sum(CASE WHEN d.trading_type='매도' then d.stock_num ELSE 0 END) ) * e.annual_payout AS total_payout, " +
+                   "               ( sum(CASE WHEN d.trading_type='매수' then d.stock_num ELSE 0 END) " +
+                   "                     - sum(CASE WHEN d.trading_type='매도' then d.stock_num ELSE 0 END) ) * d.unit_price  AS total_trading_amount , " +
+                   "               ( sum(CASE WHEN d.trading_type='매수' then d.stock_num ELSE 0 END) " +
+                   "                     - sum(CASE WHEN d.trading_type='매도' then d.stock_num ELSE 0 END) ) * s.current_price AS total_eval_amount  " +
                    "          FROM portfolio p  " +
                    "               LEFT OUTER JOIN stock s ON p.ticker = s.ticker  " +
                    "               LEFT OUTER JOIN daybooks d ON p.ticker = d.ticker AND p.email = d.email  " +
@@ -60,8 +66,11 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
     List<Object[]> selectSumPortfolio(@Param("email") String email);
 
     @Query(value =  "SELECT s.dividend_pay_month, " +
-                    "       sum(d.stock_num*e.annual_payout) AS total_payout, " +
-                    "       sum(d.stock_num*e.annual_payout) / CASE WHEN e.dividend_pay_month='per months' THEN 12 ELSE 4 END AS payout_month " +
+                    "       ( sum(CASE WHEN d.trading_type='매수' then d.stock_num ELSE 0 END) " +
+                    "             - sum(CASE WHEN d.trading_type='매도' then d.stock_num ELSE 0 END) ) * e.annual_payout AS total_payout, " +
+                    "       (( sum(CASE WHEN d.trading_type='매수' then d.stock_num ELSE 0 END) " +
+                    "              - sum(CASE WHEN d.trading_type='매도' then d.stock_num ELSE 0 END) ) * e.annual_payout) " +
+                    "        / CASE WHEN e.dividend_pay_month='per months' THEN 12 ELSE 4 END AS payout_month " +
                     "  FROM portfolio p " +
                     "       LEFT OUTER JOIN stock s ON p.ticker = s.ticker " +
                     "       LEFT OUTER JOIN daybooks d ON p.ticker = d.ticker AND p.email = d.email " +
