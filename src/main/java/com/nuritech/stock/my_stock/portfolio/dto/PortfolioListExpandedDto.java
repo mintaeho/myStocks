@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

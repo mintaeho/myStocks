@@ -25,8 +25,8 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, PortfolioI
                    " FROM (SELECT p.ticker, s.stock_nm, e.business_cycle, e.sector, " +
                    "              s.current_price, e.annual_payout, e.div_yield, " +
                    "              s.dividend_pay_month, s.highest_price, s.lower_price, " +
-                   "              SUM(case when d.trading_type='매수' then d.unit_price*d.stock_num ELSE 0 END) / " +
-                   "                  SUM(case when d.trading_type='매수' then d.stock_num ELSE 0 END) AS avg_unit_price, " +
+                   "              SUM(case when d.trading_type='매수' then d.unit_price * d.stock_num ELSE 0 END) / " +
+                   "                  SUM(case when d.trading_type='매수' then d.stock_num ELSE 1 END) AS avg_unit_price, " +
                    "              SUM(case when d.trading_type='매수' then d.stock_num ELSE 0 END) " +
                    "                  - SUM(case when d.trading_type='매도' then d.stock_num ELSE 0 END) AS total_stock_num, " +
                    "              sum(ifnull(d.trading_amount, 0)) AS total_trading_amount, " +
