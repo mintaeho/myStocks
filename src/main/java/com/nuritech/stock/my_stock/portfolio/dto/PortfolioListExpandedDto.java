@@ -81,23 +81,31 @@ public class PortfolioListExpandedDto {
                     .stockNm((String) obj[1])
                     .businessCycle((String) obj[2])
                     .sector((String) obj[3])
-                    .currentPrice((BigDecimal) obj[4])
-                    .avgUnitPrice((BigDecimal) obj[5])
-                    .totalStockNum((BigDecimal) obj[6])
-                    .annualPayout((BigDecimal) obj[7])
-                    .highestPrice((BigDecimal) obj[8])
-                    .lowerPrice((BigDecimal) obj[9])
-                    .totalPayout((BigDecimal) obj[10])
-                    .investmentDivYield((BigDecimal) obj[11])
-                    .totalTradingAmount((BigDecimal) obj[12])
-                    .evalAmount((BigDecimal) obj[13])
-                    .earningAmount((BigDecimal) obj[14])
-                    .earningRate((BigDecimal) obj[15])
-                    .portion((BigDecimal) obj[16])
+                    .currentPrice(this.toBigDecimal(obj[4]))
+                    .avgUnitPrice(this.toBigDecimal(obj[5]))
+                    .totalStockNum(this.toBigDecimal(obj[6]))
+                    .annualPayout(this.toBigDecimal(obj[7]))
+                    .highestPrice(this.toBigDecimal(obj[8]))
+                    .lowerPrice(this.toBigDecimal(obj[9]))
+                    .totalPayout(this.toBigDecimal(obj[10]))
+                    .investmentDivYield(this.toBigDecimal(obj[11]))
+                    .totalTradingAmount(this.toBigDecimal(obj[12]))
+                    .evalAmount(this.toBigDecimal(obj[13]))
+                    .earningAmount(this.toBigDecimal(obj[14]))
+                    .earningRate(this.toBigDecimal(obj[15]))
+                    .portion(this.toBigDecimal(obj[16]))
                     .dividendPayMonth((String) obj[17])
                     .build());
         }
         return list;
+    }
+
+    private BigDecimal toBigDecimal(Object obj) {
+        if (obj instanceof BigInteger) {
+            return new BigDecimal(obj.toString());
+        } else {
+            return (BigDecimal) obj;
+        }
     }
 
 }
